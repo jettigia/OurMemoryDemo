@@ -10,4 +10,9 @@ namespace OurMemory.Data.Entities
     {
         public virtual IEnumerable<Memory> Memories { get; set; }
     }
+
+    public class ApplicationRole : IdentityRole<Guid>
+    {
+        public string Description { get; set; }
+    }
 }

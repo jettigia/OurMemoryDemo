@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using OurMemory.Data.Entities;
 
 namespace OurMemory.Data
 {
-    public class OurMemoryContext : DbContext
+    public class OurMemoryContext : IdentityDbContext
     {
         public OurMemoryContext(DbContextOptions<OurMemoryContext> options) : base(options) { }
 
