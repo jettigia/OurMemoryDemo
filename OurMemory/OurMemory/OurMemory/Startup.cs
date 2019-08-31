@@ -26,6 +26,7 @@ namespace OurMemory
         // GONNA NEED THIS TO FINISH REGISTER
         // https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity?view=aspnetcore-2.2&tabs=visual-studio
         // https://docs.microsoft.com/en-us/aspnet/web-pages/overview/ui-layouts-and-themes/9-working-with-images
+        // https://docs.microsoft.com/en-us/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.2&tabs=visual-studio#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
