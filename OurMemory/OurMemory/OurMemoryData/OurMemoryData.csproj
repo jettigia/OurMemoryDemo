@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="Database\" />
+    <Folder Include="DataModels\" />
     <Folder Include="View\" />
   </ItemGroup>
 

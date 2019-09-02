@@ -1,22 +1,18 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.FileProviders;
-using OurMemory.Data.DataControllers;
 
-namespace OurMemory.Controllers
+namespace OurMemoryApi.Controllers
 {
     public class MemoryController : Controller
     {
-        private readonly MemoryDataController _memoryDataController;
-        private readonly IFileProvider fileProvider;
-        private readonly IHostingEnvironment hostingEnvironment;
+        private readonly IFileProvider _fileProvider;
+        private readonly IHostingEnvironment _hostingEnvironment;
 
-        public MemoryController(MemoryDataController memoryDataController,
-                          IFileProvider fileprovider, IHostingEnvironment env)
+        public MemoryController(IFileProvider fileprovider, IHostingEnvironment env)
         {
-            _memoryDataController = memoryDataController;
-            fileProvider = fileprovider;
-            hostingEnvironment = env;
+            _fileProvider = fileprovider;
+            _hostingEnvironment = env;
         }
 
         [HttpGet]

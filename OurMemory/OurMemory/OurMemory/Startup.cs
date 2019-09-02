@@ -1,21 +1,17 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.FileProviders;
-using OurMemory.Data;
 using OurMemory.Data.DataModels;
-using OurMemory.Data.Entities;
 using OurMemory.Services;
+using OurMemoryData.Entities;
+using OurMemoryDb.Context;
 using System;
-using System.IO;
 
 namespace OurMemory
 {
@@ -51,14 +47,14 @@ namespace OurMemory
             //    .AddEntityFrameworkStores<ApplicationDbContext>();
 
 
-            services.AddDbContext<OurMemoryContext>(options => 
+            services.AddDbContext<OurMemoryContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<OurMemoryContext>()
                 .AddSignInManager<SignInManager<ApplicationUser>>()
-                
+
                 .AddDefaultTokenProviders();
 
             services.AddTransient<IEmailSender, EmailService>();
@@ -95,9 +91,9 @@ namespace OurMemory
                 options.SlidingExpiration = true;
             });
 
-//            services.AddSingleton<IFileProvider>(
-//                new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/ImageFiles"))
-//);
+            //            services.AddSingleton<IFileProvider>(
+            //                new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/ImageFiles"))
+            //);
 
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

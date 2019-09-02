@@ -5,9 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using OurMemory.Models;
+using OurMemoryData.Models;
 
-namespace OurMemory.Controllers
+namespace OurMemoryApi.Controllers
 {
     [AllowAnonymous]
     public class HomeController : Controller

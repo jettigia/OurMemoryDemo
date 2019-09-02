@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace OurMemory.Migrations
+namespace OurMemoryDb.Migrations
 {
     public partial class AddIdentityRoles : Migration
     {

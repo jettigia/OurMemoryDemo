@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using OurMemory.Data.Entities;
+using OurMemoryData.Entities;
+using OurMemoryDb.Context;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OurMemory.Data.Repositories
+namespace OurMemoryDb.Repositories
 {
     public class DataRepository<DataType> : IDataRepository<DataType>
         where DataType : class, IOurMemoryBase

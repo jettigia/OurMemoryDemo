@@ -1,8 +1,8 @@
-﻿using OurMemory.Data.Entities;
+﻿using OurMemoryData.Entities;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OurMemory.Data.Repositories
+namespace OurMemoryDb.Repositories
 {
     public interface IDataRepository<DataType>
         where DataType : class, IOurMemoryBase

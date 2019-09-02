@@ -30,13 +30,19 @@
 
   <ItemGroup>
     <PackageReference Include="BuildBundlerMinifier" Version="2.9.406" />
-    <PackageReference Include="MailKit" Version="2.2.0" />
+    <PackageReference Include="MailKit" Version="2.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\imageFiles\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FiniTechApplication\FiniTechApplication.csproj" />
+    <ProjectReference Include="..\OurMemoryData\OurMemoryData.csproj" />
+    <ProjectReference Include="..\OurMemoryDb\OurMemoryDb.csproj" />
   </ItemGroup>
 
   <ItemGroup>

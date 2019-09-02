@@ -1,6 +1,4 @@
-using System;
-
-namespace OurMemory.Models
+namespace OurMemoryData.Models
 {
     public class ErrorViewModel
     {

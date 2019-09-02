@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using OurMemoryData.Entities;
 
-namespace OurMemoryDb
+namespace OurMemoryDb.Context
 {
     public class OurMemoryContext : IdentityDbContext
     {
