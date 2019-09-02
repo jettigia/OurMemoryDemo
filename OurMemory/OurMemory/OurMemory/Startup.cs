@@ -95,9 +95,9 @@ namespace OurMemory
                 options.SlidingExpiration = true;
             });
 
-            services.AddSingleton<IFileProvider>(
-                new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/ImageFiles"))
-);
+//            services.AddSingleton<IFileProvider>(
+//                new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/ImageFiles"))
+//);
 
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
