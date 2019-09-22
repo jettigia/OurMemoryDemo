@@ -48,6 +48,11 @@ namespace OurMemoryWebApi.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [DataType(DataType.Text)]
+        [Display(Name = "Name")]
+        [StringLength(150)]
+        public string Name { get; set; }
     }
 
     public class RegisterExternalBindingModel
