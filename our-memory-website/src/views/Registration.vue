@@ -80,7 +80,7 @@ export default {
     async onSubmit(evt) {
       evt.preventDefault();
 
-      var result = await ApiService.post("Account\\Register", this.form);
+      var result = await ApiService.post("\\Account\\Register", this.form);
 
       if (result.status == 200) {
         console.log("success: " + result.data);

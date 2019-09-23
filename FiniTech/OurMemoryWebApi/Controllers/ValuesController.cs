@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace OurMemoryWebApi.Controllers
 {
-    [Authorize]
+    [AllowAnonymous]
     public class ValuesController : ApiController
     {
         // GET api/values
