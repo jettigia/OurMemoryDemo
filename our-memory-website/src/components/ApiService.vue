@@ -3,7 +3,7 @@ import axios from 'axios';
 
 class ApiService {
   constructor() {
-    this.baseUrl = "https://localhost:44349/api";
+    this.baseUrl = "http://localhost:55610/api";
   }
 
   getData(path) {
@@ -11,9 +11,14 @@ class ApiService {
     return axios.get(`${url}`);
   }
 
-  post(path) {
+  getUrl(path) {
+      return `${this.baseUrl}${path}`;
+  }
+
+
+  post(path, data) {
       let url = `${this.baseUrl}${path}`;
-      return axios.post(url, path);
+      return axios.post(url, JSON.stringify(data));
   }
 }
 
