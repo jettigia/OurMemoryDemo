@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IdentityServer4.Models;
+using IdentityServer4.Test;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,8 +30,11 @@ namespace OurMemoryUserApi
         {
             services.AddControllers();
             services.AddIdentityServer()
-                .AddInMemoryApiResources(Config.Apis)
-                .AddInMemoryClients(Config.Clients);
+                .AddInMemoryClients(Config.GetClients())
+                .AddInMemoryIdentityResources(Config.GetIdentityResources())
+                .AddInMemoryApiResources(Config.GetApis())
+                .AddDeveloperSigningCredential();
+                
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,7 +49,9 @@ namespace OurMemoryUserApi
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseIdentityServer();
+
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

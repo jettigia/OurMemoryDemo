@@ -2,6 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <StartupObject>OurMemoryUserApi.Program</StartupObject>
+    <ApplicationIcon />
+    <OutputType>WinExe</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
