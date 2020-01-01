@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-
-namespace OurMemory.Interfaces
+﻿namespace OurMemory.Interfaces
 {
     public interface IPost
     {
+        string Id { get; set; }
         string Content { get; set; }
     }
 }
