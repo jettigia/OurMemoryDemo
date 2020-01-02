@@ -8,5 +8,6 @@ namespace OurMemoryCms.Models
         public string Content { get; set; }
 
         public List<CommentViewModel> Comments { get; set; }
+        public string Id { get ; set; }
     }
 }

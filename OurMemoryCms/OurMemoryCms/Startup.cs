@@ -10,8 +10,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using OurMemoryDb;
 using OurMemoryService.Interfaces;
 using OurMemoryService.Services;
+using Microsoft.EntityFrameworkCore.SqlServer;
+using Microsoft.EntityFrameworkCore;
 
 namespace OurMemoryCms
 {
@@ -28,6 +31,11 @@ namespace OurMemoryCms
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddDbContext<OurMemoryContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("SmarterAspConnection"))
+            );
+
             services.AddScoped<IPostService, PostService>();
         }
 
