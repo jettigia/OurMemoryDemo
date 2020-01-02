@@ -1372,3 +1372,11 @@ ol {
 	height: 100%;
 	min-height: 100%;
   }
+
+  button:focus {
+    outline: 0;
+}
+
+.navbar .dropdown-menu .form-control {
+    width: 200px;
+}
