@@ -1,13 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OurMemoryDb.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using OurMemory.Entities;
 
 namespace OurMemoryDb
 {
     public class OurMemoryContext : DbContext
     {
+        public OurMemoryContext(DbContextOptions<OurMemoryContext> options) : base(options) { }
         public DbSet<CommentEntity> Comments { get; set; }
         public DbSet<PostEntity> Posts { get; set; }
 

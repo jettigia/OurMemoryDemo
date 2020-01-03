@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OurMemoryCms.Models;
+using OurMemory.Models;
 using OurMemoryService.Interfaces;
 using System;
 using System.Collections.Generic;

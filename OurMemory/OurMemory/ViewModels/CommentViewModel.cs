@@ -1,6 +1,6 @@
 ﻿using OurMemory.Interfaces;
 
-namespace OurMemoryCms.Models
+namespace OurMemory.Models
 {
     public class CommentViewModel : IComment
     {

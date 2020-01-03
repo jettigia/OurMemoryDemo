@@ -1,6 +1,6 @@
 ﻿using OurMemory.Interfaces;
 
-namespace OurMemoryDb.Entities
+namespace OurMemory.Entities
 {
     public class CommentEntity : IComment
     {

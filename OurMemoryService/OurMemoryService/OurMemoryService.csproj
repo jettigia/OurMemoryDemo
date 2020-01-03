@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\OurMemoryDb\OurMemoryDb\OurMemoryDb.csproj" />
     <ProjectReference Include="..\..\OurMemory\OurMemory\OurMemory.csproj" />
   </ItemGroup>
 

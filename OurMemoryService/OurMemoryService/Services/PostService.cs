@@ -1,4 +1,8 @@
-﻿using OurMemory.Interfaces;
+﻿using AutoMapper;
+using OurMemory.Entities;
+using OurMemory.Interfaces;
+using OurMemory.Models;
+using OurMemoryDb;
 using OurMemoryService.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -7,14 +11,21 @@ namespace OurMemoryService.Services
 {
     public class PostService : IPostService
     {
-        public IPost Create(IPost post)
+        private readonly IPostRepository _postRepository;
+        private readonly IMapper _mapper;
+
+        public PostService(IPostRepository postRepository, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _postRepository = postRepository;
+            _mapper = mapper;
         }
 
-        public bool Delete(IPost post)
+        public IPost Create(IPost post)
         {
-            throw new NotImplementedException();
+            var postEntity = _mapper.Map<PostEntity>(post);
+            var newEntity = _postRepository.CreateEntity(postEntity);
+            var newViewModel = _mapper.Map<PostViewModel>(newEntity);
+            return newViewModel;
         }
 
         public IPost Read(string postId, string userId)
@@ -28,6 +39,11 @@ namespace OurMemoryService.Services
         }
 
         public IPost Update(IPost post)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Delete(IPost post)
         {
             throw new NotImplementedException();
         }

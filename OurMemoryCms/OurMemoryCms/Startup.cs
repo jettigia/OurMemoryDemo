@@ -1,20 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using OurMemoryDb;
 using OurMemoryService.Interfaces;
+using OurMemoryService.Maps;
 using OurMemoryService.Services;
-using Microsoft.EntityFrameworkCore.SqlServer;
-using Microsoft.EntityFrameworkCore;
 
 namespace OurMemoryCms
 {
@@ -36,7 +30,15 @@ namespace OurMemoryCms
                 options.UseSqlServer(Configuration.GetConnectionString("SmarterAspConnection"))
             );
 
+            services.AddAutoMapper(typeof(ServiceProfile));
+
+            // Services
             services.AddScoped<IPostService, PostService>();
+            services.AddScoped<ICommentService, CommentService>();
+
+            // Repositories
+            services.AddScoped<IPostRepository, PostRepository>();
+            services.AddScoped<ICommentRepository, CommentRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

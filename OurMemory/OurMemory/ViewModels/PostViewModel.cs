@@ -1,7 +1,7 @@
 ﻿using OurMemory.Interfaces;
 using System.Collections.Generic;
 
-namespace OurMemoryCms.Models
+namespace OurMemory.Models
 {
     public class PostViewModel : IPost
     {

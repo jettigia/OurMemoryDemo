@@ -1,7 +1,7 @@
 ﻿using OurMemory.Interfaces;
 using System.Collections.Generic;
 
-namespace OurMemoryDb.Entities
+namespace OurMemory.Entities
 {
     public class PostEntity : IPost
     {
