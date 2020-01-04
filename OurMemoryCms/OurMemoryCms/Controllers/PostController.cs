@@ -4,6 +4,7 @@ using OurMemoryService.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace OurMemoryCms.Controllers
 {
@@ -12,7 +13,7 @@ namespace OurMemoryCms.Controllers
     public class PostController : ControllerBase
     {
         private readonly IPostService _postService;
-        private const string CANNOT_CREATE = "Could not create the post.";
+        private const string CANNOT_CREATE = "Could not create the post. ";
 
         public PostController(IPostService postService)
         {
@@ -20,11 +21,11 @@ namespace OurMemoryCms.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(PostViewModel postViewModel)
+        public async Task<ActionResult> Create(PostViewModel postViewModel)
         {
             try
             {
-                var newPost = _postService.Create(postViewModel);
+                var newPost = await _postService.Create(postViewModel);
 
                 if (newPost != null)
                 {
@@ -32,20 +33,19 @@ namespace OurMemoryCms.Controllers
                 }
                 else
                 {
-                    var resourceUrl = Path.Combine(Request.Path.ToString(), Uri.EscapeUriString(newPost.Id));
+                    var resourceUrl = Path.Combine(Request.Path.ToString(), Uri.EscapeUriString(newPost.Id.ToString()));
                     return Created(resourceUrl, newPost);
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                return BadRequest(CANNOT_CREATE);
+                return BadRequest(CANNOT_CREATE + ex.Message);
             }            
         }
 
         [HttpGet]
         public ActionResult<List<PostViewModel>> GetMyPosts()
         {
-            //return Ok(Glossary.Data);
             return Conflict("Cannot create post.");
         }
 
@@ -55,7 +55,7 @@ namespace OurMemoryCms.Controllers
         {
             string glossaryItem = "b";
             glossaryItem = null;
-            if (glossaryItem == null)
+            if (string.IsNullOrWhiteSpace(postId))
             {
                 return NotFound();
             }
@@ -64,5 +64,7 @@ namespace OurMemoryCms.Controllers
                 return Ok(glossaryItem);
             }
         }
+
+        // Still need update and delete.
     }
 }

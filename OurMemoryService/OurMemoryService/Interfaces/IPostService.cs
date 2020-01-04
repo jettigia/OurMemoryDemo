@@ -1,11 +1,12 @@
 ﻿using OurMemory.Interfaces;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace OurMemoryService.Interfaces
 {
     public interface IPostService
     {
-        IPost Create(IPost post);
+        Task<IPost> Create(IPost post);
 
         IPost Read(string postId, string userId);
 

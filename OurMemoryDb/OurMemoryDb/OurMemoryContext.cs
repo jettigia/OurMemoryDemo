@@ -11,6 +11,8 @@ namespace OurMemoryDb
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<PostEntity>()
+                .HasKey(entity => entity.Id);
 
             base.OnModelCreating(modelBuilder);
         }

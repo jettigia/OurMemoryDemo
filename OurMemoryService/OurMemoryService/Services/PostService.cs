@@ -6,6 +6,7 @@ using OurMemoryDb;
 using OurMemoryService.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace OurMemoryService.Services
 {
@@ -20,10 +21,10 @@ namespace OurMemoryService.Services
             _mapper = mapper;
         }
 
-        public IPost Create(IPost post)
+        public async Task<IPost> Create(IPost post)
         {
             var postEntity = _mapper.Map<PostEntity>(post);
-            var newEntity = _postRepository.CreateEntity(postEntity);
+            var newEntity = await _postRepository.CreateEntity(postEntity);
             var newViewModel = _mapper.Map<PostViewModel>(newEntity);
             return newViewModel;
         }

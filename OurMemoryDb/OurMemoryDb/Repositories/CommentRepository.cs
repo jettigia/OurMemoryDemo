@@ -1,4 +1,5 @@
 ﻿using OurMemory.Entities;
+using System;
 using System.Threading.Tasks;
 
 namespace OurMemoryDb
@@ -19,7 +20,7 @@ namespace OurMemoryDb
             return entity;
         }
 
-        public async Task<CommentEntity> ReadEntity(string id)
+        public async Task<CommentEntity> ReadEntity(Guid id)
         {
             var entity = await _context.Comments.FindAsync(id);
             return entity;

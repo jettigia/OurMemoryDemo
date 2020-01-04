@@ -1,10 +1,11 @@
 ﻿using OurMemory.Interfaces;
+using System;
 
 namespace OurMemory.Entities
 {
     public class CommentEntity : IComment
     {
-        public string Id { get; set; }
+        public Guid Id { get; set; }
         public string Comment { get; set; }
         public virtual PostEntity Post { get; set; }
     }
