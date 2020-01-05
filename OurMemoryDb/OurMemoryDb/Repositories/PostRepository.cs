@@ -1,5 +1,8 @@
-﻿using OurMemory.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using OurMemory.Entities;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace OurMemoryDb
@@ -13,33 +16,41 @@ namespace OurMemoryDb
             _context = context;
         }
 
-        public async Task<PostEntity> CreateEntity(PostEntity entity)
+        public async Task<PostEntity> CreateEntityAsync(PostEntity entity)
         {
-            await _context.Posts.AddAsync(entity);
+            await _context.PostEntities.AddAsync(entity);
             await _context.SaveChangesAsync();
             return entity;
         }
 
-        public async Task<PostEntity> ReadEntity(Guid id)
+        public async Task<PostEntity> ReadEntityAsync(Guid postId)
         {
-            var entity = await _context.Posts.FindAsync(id);
+            var entity = await _context.PostEntities.FindAsync(postId);
             return entity;
         }
 
-        public async Task<PostEntity> UpdateEntity(PostEntity entity)
+        public async Task<List<PostEntity>> ReadAllEntityAsync(Guid userId)
         {
-            var dbEntity = await ReadEntity(entity.Id);
+            var connection = _context.Database.GetDbConnection();
+            _context.SaveChanges();
+            var entity = await _context.PostEntities.ToListAsync();
+            return entity;
+        }
+
+        public async Task<PostEntity> UpdateEntityAsync(PostEntity entity)
+        {
+            var dbEntity = await ReadEntityAsync(entity.Id);
             dbEntity.Content = entity.Content;
             _context.Update(dbEntity);
             await _context.SaveChangesAsync();
             return dbEntity;
         }
 
-        public async Task<bool> DeleteEntity(PostEntity entity)
+        public async Task<bool> DeleteEntityAsync(PostEntity entity)
         {
             try
             {
-                var dbEntity = await ReadEntity(entity.Id);
+                var dbEntity = await ReadEntityAsync(entity.Id);
                 _context.Remove(dbEntity);
                 await _context.SaveChangesAsync();
                 return true;

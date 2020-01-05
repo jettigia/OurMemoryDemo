@@ -13,33 +13,33 @@ namespace OurMemoryDb
             _context = context;
         }
 
-        public async Task<CommentEntity> CreateEntity(CommentEntity entity)
+        public async Task<CommentEntity> CreateEntityAsync(CommentEntity entity)
         {
-            _context.Comments.Add(entity);
+            _context.CommentEntities.Add(entity);
             await _context.SaveChangesAsync();
             return entity;
         }
 
-        public async Task<CommentEntity> ReadEntity(Guid id)
+        public async Task<CommentEntity> ReadEntityAsync(Guid id)
         {
-            var entity = await _context.Comments.FindAsync(id);
+            var entity = await _context.CommentEntities.FindAsync(id);
             return entity;
         }
 
-        public async Task<CommentEntity> UpdateEntity(CommentEntity entity)
+        public async Task<CommentEntity> UpdateEntityAsync(CommentEntity entity)
         {
-            var dbEntity = await ReadEntity(entity.Id);
+            var dbEntity = await ReadEntityAsync(entity.Id);
             dbEntity.Comment = entity.Comment;
             _context.Update(dbEntity);
             await _context.SaveChangesAsync();
             return dbEntity;
         }
 
-        public async Task<bool> DeleteEntity(CommentEntity entity)
+        public async Task<bool> DeleteEntityAsync(CommentEntity entity)
         {
             try
             {
-                var dbEntity = await ReadEntity(entity.Id);
+                var dbEntity = await ReadEntityAsync(entity.Id);
                 _context.Remove(dbEntity);
                 await _context.SaveChangesAsync();
                 return true;

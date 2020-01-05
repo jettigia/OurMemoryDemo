@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace OurMemoryDb
 {
     public interface IRepository<EntityType>
     {
-        Task<EntityType> CreateEntity(EntityType entity);
-        Task<EntityType> ReadEntity(Guid id);
-        Task<EntityType> UpdateEntity(EntityType entity);
-        Task<bool> DeleteEntity(EntityType entity);
+        Task<EntityType> CreateEntityAsync(EntityType entity);
+        Task<EntityType> ReadEntityAsync(Guid userId);
+        Task<EntityType> UpdateEntityAsync(EntityType entity);
+        Task<bool> DeleteEntityAsync(EntityType entity);
     }
 }

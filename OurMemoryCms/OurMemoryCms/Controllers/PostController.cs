@@ -25,16 +25,16 @@ namespace OurMemoryCms.Controllers
         {
             try
             {
-                var newPost = await _postService.Create(postViewModel);
+                var newPost = await _postService.CreateAsync(postViewModel);
 
                 if (newPost != null)
                 {
-                    return Conflict(CANNOT_CREATE);
+                    var resourceUrl = Path.Combine(Request.Path.ToString(), Uri.EscapeUriString(newPost.Id.ToString()));
+                    return Created(resourceUrl, newPost);                    
                 }
                 else
                 {
-                    var resourceUrl = Path.Combine(Request.Path.ToString(), Uri.EscapeUriString(newPost.Id.ToString()));
-                    return Created(resourceUrl, newPost);
+                    return Conflict(CANNOT_CREATE);
                 }
             }
             catch (Exception ex)
@@ -44,9 +44,10 @@ namespace OurMemoryCms.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<PostViewModel>> GetMyPosts()
+        public async Task<ActionResult<List<PostViewModel>>> GetMyPosts()
         {
-            return Conflict("Cannot create post.");
+            var myPosts = await _postService.ReadAsync(Guid.NewGuid());
+            return myPosts;
         }
 
         [HttpGet]

@@ -21,30 +21,32 @@ namespace OurMemoryService.Services
             _mapper = mapper;
         }
 
-        public async Task<IPost> Create(IPost post)
+        public async Task<PostViewModel> CreateAsync(PostViewModel post)
         {
             var postEntity = _mapper.Map<PostEntity>(post);
-            var newEntity = await _postRepository.CreateEntity(postEntity);
+            var newEntity = await _postRepository.CreateEntityAsync(postEntity);
             var newViewModel = _mapper.Map<PostViewModel>(newEntity);
             return newViewModel;
         }
 
-        public IPost Read(string postId, string userId)
+        public async Task<PostViewModel> ReadAsync(Guid postId, Guid userId)
         {
             throw new NotImplementedException();
         }
 
-        public List<IPost> Read(string userId)
+        public async Task<List<PostViewModel>> ReadAsync(Guid userId)
+        {
+            var postEntities = await _postRepository.ReadAllEntityAsync(userId);
+            var postModels = _mapper.Map<List<PostViewModel>>(postEntities);
+            return postModels;            
+        }
+
+        public async Task<PostViewModel> UpdateAsync(PostViewModel post)
         {
             throw new NotImplementedException();
         }
 
-        public IPost Update(IPost post)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Delete(IPost post)
+        public Task<bool> DeleteAsync(PostViewModel post)
         {
             throw new NotImplementedException();
         }

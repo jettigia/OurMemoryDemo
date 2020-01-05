@@ -7,6 +7,7 @@ namespace OurMemory.Entities
     {
         public Guid Id { get; set; }
         public string Comment { get; set; }
+        public Guid PostId { get; set; }
         public virtual PostEntity Post { get; set; }
     }
 }

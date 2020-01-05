@@ -1,55 +1,56 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace OurMemoryDb.Migrations
 {
-    public partial class InitialMigratonAddPostComment : Migration
+    public partial class InitialPostComment : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Posts",
+                name: "PostEntities",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<Guid>(nullable: false),
                     Content = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Posts", x => x.Id);
+                    table.PrimaryKey("PK_PostEntities", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Comments",
+                name: "CommentEntities",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<Guid>(nullable: false),
                     Comment = table.Column<string>(nullable: true),
-                    PostId = table.Column<string>(nullable: true)
+                    PostId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Comments", x => x.Id);
+                    table.PrimaryKey("PK_CommentEntities", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Comments_Posts_PostId",
+                        name: "FK_CommentEntities_PostEntities_PostId",
                         column: x => x.PostId,
-                        principalTable: "Posts",
+                        principalTable: "PostEntities",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comments_PostId",
-                table: "Comments",
+                name: "IX_CommentEntities_PostId",
+                table: "CommentEntities",
                 column: "PostId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Comments");
+                name: "CommentEntities");
 
             migrationBuilder.DropTable(
-                name: "Posts");
+                name: "PostEntities");
         }
     }
 }

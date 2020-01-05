@@ -7,13 +7,8 @@
 		<div class="row">
 
 			<div class="col-md-12 col-sm-12">
-				<h3 class="wow bounceIn" data-wow-delay="0.9s">Welcome Summoner!</h3>
-				<h1 class="wow fadeInUp" data-wow-delay="1.6s">Bloob de bloob:</h1>
-				<h4></h4>
-				<h5 class="wow fadeInUp" data-wow-delay="2s">Boop doop de doop, loop de scoop and doop de boop!</h5>
-        <br>
-        <router-link to="/about" class="btn btn-lg btn-default smoothScroll wow fadeInUp ">LEARN MORE</router-link>
-        <router-link to="/registration" class="btn btn-lg btn-danger smoothScroll wow fadeInUp">Try Now</router-link>
+				<h3 class="wow bounceIn" data-wow-delay="0.9s">Our Memory</h3>
+				<h1 class="wow fadeInUp" data-wow-delay="1.6s">Currently in development.</h1>
 			</div>
 
     </div>

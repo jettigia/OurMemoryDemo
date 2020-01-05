@@ -1,4 +1,6 @@
 ﻿using OurMemory.Interfaces;
+using OurMemory.Models;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -6,14 +8,14 @@ namespace OurMemoryService.Interfaces
 {
     public interface IPostService
     {
-        Task<IPost> Create(IPost post);
+        Task<PostViewModel> CreateAsync(PostViewModel post);
 
-        IPost Read(string postId, string userId);
+        Task<PostViewModel> ReadAsync(Guid postId, Guid userId);
 
-        List<IPost> Read(string userId);
+        Task<List<PostViewModel>> ReadAsync(Guid userId);
 
-        IPost Update(IPost post);
+        Task<PostViewModel> UpdateAsync(PostViewModel post);
 
-        bool Delete(IPost post);
+        Task<bool> DeleteAsync(PostViewModel post);
     }
 }
