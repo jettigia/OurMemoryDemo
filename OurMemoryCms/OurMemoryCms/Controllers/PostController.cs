@@ -46,26 +46,60 @@ namespace OurMemoryCms.Controllers
         [HttpGet]
         public async Task<ActionResult<List<PostViewModel>>> GetMyPosts()
         {
-            var myPosts = await _postService.ReadAsync(Guid.NewGuid());
-            return myPosts;
+            try
+            {
+                var myPosts = await _postService.ReadAsync(Guid.NewGuid());
+                return myPosts;
+            }
+            catch (Exception ex)
+            {
+                return NotFound();
+            }
         }
 
         [HttpGet]
         [Route("{postId}")]
-        public ActionResult<PostViewModel> Get(string postId)
+        public async Task<ActionResult<PostViewModel>> Get(Guid postId)
         {
-            string glossaryItem = "b";
-            glossaryItem = null;
-            if (string.IsNullOrWhiteSpace(postId))
+            try
+            {
+                var myPosts = await _postService.ReadAsync(postId, Guid.NewGuid());
+                return myPosts;
+            }
+            catch (Exception ex)
             {
                 return NotFound();
             }
-            else
+        }
+
+        [HttpPut]
+        [Route("{postId}")]
+        public async Task<ActionResult<PostViewModel>> UpdatePost(PostViewModel post)
+        {
+            try
             {
-                return Ok(glossaryItem);
+                var updatedPost = await _postService.UpdateAsync(post);
+                return updatedPost;
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
             }
         }
 
-        // Still need update and delete.
+        [HttpDelete]
+        [Route("{postId}")]
+        public async Task<ActionResult<bool>> DeletePost(PostViewModel post)
+        {
+            try
+            {
+                var isDeleted = await _postService.DeleteAsync(post);
+                return isDeleted;
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+        }
     }
 }

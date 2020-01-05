@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using OurMemory.Entities;
-using OurMemory.Interfaces;
 using OurMemory.Models;
 using OurMemoryDb;
 using OurMemoryService.Interfaces;
@@ -38,17 +37,22 @@ namespace OurMemoryService.Services
         {
             var postEntities = await _postRepository.ReadAllEntityAsync(userId);
             var postModels = _mapper.Map<List<PostViewModel>>(postEntities);
-            return postModels;            
+            return postModels;
         }
 
         public async Task<PostViewModel> UpdateAsync(PostViewModel post)
         {
-            throw new NotImplementedException();
+            var newEntity = _mapper.Map<PostEntity>(post);
+            var updatedEntity = await _postRepository.UpdateEntityAsync(newEntity);
+            var updatedModel = _mapper.Map<PostViewModel>(updatedEntity);
+            return updatedModel;
         }
 
-        public Task<bool> DeleteAsync(PostViewModel post)
+        public async Task<bool> DeleteAsync(PostViewModel post)
         {
-            throw new NotImplementedException();
+            var entityToDelete = _mapper.Map<PostEntity>(post);
+            var isSuccessful = await _postRepository.DeleteEntityAsync(entityToDelete);
+            return isSuccessful;
         }
     }
 }
