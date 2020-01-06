@@ -18,12 +18,21 @@
           ></b-form-input>
         </b-form-group>
 
-        <b-form-group id="name.Label" label="Your Name:" label-for="nameInput">
+        <b-form-group id="firstName.Label" label="First Name:" label-for="firstNameInput">
           <b-form-input
-            id="nameInput"
-            v-model="model.name"
+            id="firstNameInput"
+            v-model="model.firstName"
             required
-            placeholder="Enter name"
+            placeholder="Enter first name"
+          ></b-form-input>
+        </b-form-group>
+
+        <b-form-group id="lastName.Label" label="Last Name:" label-for="lastNameInput">
+          <b-form-input
+            id="lastNameInput"
+            v-model="model.lastName"
+            required
+            placeholder="Enter last name"
           ></b-form-input>
         </b-form-group>
 
@@ -62,15 +71,15 @@
 </template>
 
 <script>
-import axios from "axios";
-import ApiService from "..\\components\\ApiService.vue";
+import UserService from "@/components/user-service";
 
 export default {
   data() {
     return {
       model: {
         email: "",
-        name: "",
+        firstName: "",
+        lastName: "",
         confirmPassword: "",
         password: ""
       },
@@ -81,10 +90,15 @@ export default {
     async onSubmit(evt) {
       evt.preventDefault();
 
-      var result = await ApiService.post("\\Account\\Register", {
+  if (this.model.password != this.model.confirmPassword) {
+    return;
+  }
+
+      var service = new UserService();
+      var result = await service.register({
         "model.email": this.model.email,
-        "model.name": this.model.name,
-        "model.confirmPassword": this.model.confirmPassword,
+        "model.firstName": this.model.firstName,
+        "model.lastName": this.model.firstName,
         "model.password": this.model.password
       });
 

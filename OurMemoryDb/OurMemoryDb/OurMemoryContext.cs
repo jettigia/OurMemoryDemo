@@ -8,6 +8,7 @@ namespace OurMemoryDb
         public OurMemoryContext(DbContextOptions<OurMemoryContext> options) : base(options) { }
         public DbSet<CommentEntity> CommentEntities { get; set; }
         public DbSet<PostEntity> PostEntities { get; set; }
+        public DbSet<UserEntity> UserEntities { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

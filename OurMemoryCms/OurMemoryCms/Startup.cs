@@ -30,15 +30,18 @@ namespace OurMemoryCms
                 options.UseSqlServer(Configuration.GetConnectionString("SmarterAspConnection"))
             );
 
-            services.AddAutoMapper(typeof(ServiceProfile));
+            services.AddAutoMapper(typeof(ServiceProfile), typeof(UserProfile));
 
             // Services
-            services.AddScoped<IPostService, PostService>();
             services.AddScoped<ICommentService, CommentService>();
+            services.AddScoped<IPostService, PostService>();
+            services.AddScoped<IUserService, UserService>();
 
             // Repositories
-            services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<ICommentRepository, CommentRepository>();
+            services.AddScoped<IPostRepository, PostRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

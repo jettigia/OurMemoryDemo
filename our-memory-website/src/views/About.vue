@@ -13,7 +13,7 @@
 				<div class="col-lg-6 p-0">
 					<div class="about-text">
 						<h2>About Our Memory</h2>
-						<p>Our Memory is dedicated to storing and protecting your memories.
+						<p>Our Memory is dedicated to storing and protecting your memories.</p>
 						<a href="#" class="site-btn">contact us</a>
 					</div>
 				</div>
