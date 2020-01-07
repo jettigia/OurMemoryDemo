@@ -36,6 +36,15 @@
           ></b-form-input>
         </b-form-group>
 
+        <b-form-group id="username.Label" label="Username:" label-for="username">
+          <b-form-input
+            id="username"
+            v-model="model.username"
+            required
+            placeholder="Enter username"
+          ></b-form-input>
+        </b-form-group>
+
         <b-form-group
           id="passwordLabel"
           label="password:"
@@ -77,11 +86,12 @@ export default {
   data() {
     return {
       model: {
-        email: "",
-        firstName: "",
-        lastName: "",
-        confirmPassword: "",
-        password: ""
+        email: '',
+        firstName: '',
+        lastName: '',
+        username: '',
+        confirmPassword: '',
+        password: ''
       },
       show: true
     };
@@ -96,10 +106,11 @@ export default {
 
       var service = new UserService();
       var result = await service.register({
-        "model.email": this.model.email,
-        "model.firstName": this.model.firstName,
-        "model.lastName": this.model.firstName,
-        "model.password": this.model.password
+        "email": this.model.email,
+        "firstName": this.model.firstName,
+        "lastName": this.model.lastName,
+        "username": this.model.username,
+        "password": this.model.password
       });
 
       if (result.status == 200) {

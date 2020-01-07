@@ -1,18 +1,5 @@
-﻿// vue.config.js
-module.exports = {
+﻿module.exports = {
   devServer: {
-    proxy: {
-      "/api/*": {
-          target: "https://localhost:44399",
-          changeOrigin: true,
-          secure: true,
-          pathRewrite: {
-            '^/api': ''
-            }
-      }
+    proxy: 'https://localhost:44399'
   }
-  },
-  configureWebpack: {
-    devtool: "source-map"
-  }
-};
+}

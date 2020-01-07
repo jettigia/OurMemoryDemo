@@ -42,6 +42,18 @@ namespace OurMemoryCms
             services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("VueCorsPolicy", builder =>
+                {
+                    builder
+                      .AllowAnyHeader()
+                      .AllowAnyMethod()
+                      .AllowCredentials()
+                      .WithOrigins("http://localhost:8080");
+                });
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +64,8 @@ namespace OurMemoryCms
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors("VueCorsPolicy");
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -61,7 +75,7 @@ namespace OurMemoryCms
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-            });
+            });            
         }
     }
 }
