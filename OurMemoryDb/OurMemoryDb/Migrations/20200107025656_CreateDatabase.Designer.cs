@@ -10,8 +10,8 @@ using OurMemoryDb;
 namespace OurMemoryDb.Migrations
 {
     [DbContext(typeof(OurMemoryContext))]
-    [Migration("20200105195456_AddUsers")]
-    partial class AddUsers
+    [Migration("20200107025656_CreateDatabase")]
+    partial class CreateDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -56,10 +56,12 @@ namespace OurMemoryDb.Migrations
 
             modelBuilder.Entity("OurMemory.Entities.UserEntity", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
@@ -78,7 +80,7 @@ namespace OurMemoryDb.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserEntities");
+                    b.ToTable("UserEntity");
                 });
 
             modelBuilder.Entity("OurMemory.Entities.CommentEntity", b =>

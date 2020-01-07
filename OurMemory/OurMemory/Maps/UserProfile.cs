@@ -8,9 +8,11 @@ namespace OurMemoryService.Maps
     {
         public UserProfile()
         {
-            CreateMap<UserEntity, UserViewModel>();
-            CreateMap<RegisterViewModel, UserEntity>();
-            CreateMap<UpdateViewModel, UserEntity>();
+            CreateMap<UserEntity, UserViewModel>().ReverseMap();
+            CreateMap<RegisterViewModel, UserEntity>().ReverseMap();
+            CreateMap<RegisterViewModel, UserViewModel>().ReverseMap();
+            CreateMap<UserViewModel, UserEntity>().ReverseMap();
+            CreateMap<UpdateViewModel, UserEntity>().ReverseMap();
         }
     }
 }

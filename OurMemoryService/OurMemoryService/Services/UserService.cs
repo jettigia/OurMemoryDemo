@@ -54,7 +54,8 @@ namespace OurMemoryService.Services
             if (string.IsNullOrWhiteSpace(password))
                 throw new AppException("Password is required");
 
-            if (_userRepository.ReadEntityAsync(user.Username) != null)
+            var checkUsernameUser = await _userRepository.ReadEntityAsync(user.Username);
+            if (checkUsernameUser != null)
                 throw new AppException("Username \"" + user.Username + "\" is already taken");
 
             byte[] passwordHash, passwordSalt;
@@ -66,6 +67,7 @@ namespace OurMemoryService.Services
 
             var dbUserEntity = await _userRepository.CreateEntityAsync(newUserEntity);
             var userViewModel = _mapper.Map<UserViewModel>(dbUserEntity);
+            userViewModel.Password = string.Empty;
             return user;
         }
 

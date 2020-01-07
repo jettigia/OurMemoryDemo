@@ -16,20 +16,20 @@ namespace OurMemoryDb
 
         public async Task<UserEntity> CreateEntityAsync(UserEntity entity)
         {
-            _context.UserEntities.Add(entity);
+            _context.UserEntity.Add(entity);
             await _context.SaveChangesAsync();
             return entity;
         }
 
         public async Task<UserEntity> ReadEntityAsync(Guid userId)
         {
-            var entity = await _context.UserEntities.FindAsync(userId);
+            var entity = await _context.UserEntity.FindAsync(userId);
             return entity;
         }
 
         public async Task<UserEntity> ReadEntityAsync(string username)
         {
-            var entity = await _context.UserEntities.SingleOrDefaultAsync(x => x.Username == username);
+            var entity = await _context.UserEntity.SingleOrDefaultAsync(x => x.Username == username);
             return entity;
         }
 

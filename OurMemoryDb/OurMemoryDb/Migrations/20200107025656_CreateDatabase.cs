@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace OurMemoryDb.Migrations
 {
-    public partial class InitialPostComment : Migration
+    public partial class CreateDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,6 +17,23 @@ namespace OurMemoryDb.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PostEntities", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserEntity",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Email = table.Column<string>(nullable: true),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
+                    Username = table.Column<string>(nullable: true),
+                    PasswordHash = table.Column<byte[]>(nullable: true),
+                    PasswordSalt = table.Column<byte[]>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserEntity", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -48,6 +65,9 @@ namespace OurMemoryDb.Migrations
         {
             migrationBuilder.DropTable(
                 name: "CommentEntities");
+
+            migrationBuilder.DropTable(
+                name: "UserEntity");
 
             migrationBuilder.DropTable(
                 name: "PostEntities");

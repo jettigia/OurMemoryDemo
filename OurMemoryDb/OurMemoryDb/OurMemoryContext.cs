@@ -8,10 +8,13 @@ namespace OurMemoryDb
         public OurMemoryContext(DbContextOptions<OurMemoryContext> options) : base(options) { }
         public DbSet<CommentEntity> CommentEntities { get; set; }
         public DbSet<PostEntity> PostEntities { get; set; }
-        public DbSet<UserEntity> UserEntities { get; set; }
+        public DbSet<UserEntity> UserEntity { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<UserEntity>()
+                .HasKey(entity => entity.Id);
+
             modelBuilder.Entity<PostEntity>()
                 .HasKey(entity => entity.Id);
 

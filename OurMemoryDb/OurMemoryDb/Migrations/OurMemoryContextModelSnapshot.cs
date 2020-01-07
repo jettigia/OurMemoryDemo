@@ -54,10 +54,12 @@ namespace OurMemoryDb.Migrations
 
             modelBuilder.Entity("OurMemory.Entities.UserEntity", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
@@ -76,7 +78,7 @@ namespace OurMemoryDb.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserEntities");
+                    b.ToTable("UserEntity");
                 });
 
             modelBuilder.Entity("OurMemory.Entities.CommentEntity", b =>
