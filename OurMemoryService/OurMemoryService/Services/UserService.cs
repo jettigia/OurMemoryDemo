@@ -68,7 +68,8 @@ namespace OurMemoryService.Services
             var dbUserEntity = await _userRepository.CreateEntityAsync(newUserEntity);
             var userViewModel = _mapper.Map<UserViewModel>(dbUserEntity);
             userViewModel.Password = string.Empty;
-            return user;
+            userViewModel.Id = Guid.Empty;
+            return userViewModel;
         }
 
         public async Task<UserViewModel> Update(UserViewModel userParam, string password = null)

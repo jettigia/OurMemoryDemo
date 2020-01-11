@@ -96,6 +96,12 @@ export default {
       show: true
     };
   },
+  async mounted() {
+    console.log('Registration Version 1.0.0.5');
+    var service = new UserService();
+    var result = await service.getVersion();
+    console.log(result.data);
+  },
   methods: {
     async onSubmit(evt) {
       evt.preventDefault();
@@ -113,13 +119,15 @@ export default {
         "password": this.model.password
       });
 
+      this.model.password = '';
+
       if (result.status == 200) {
         console.log("success: " + result.data);
       } else {
-        console.log("failure:" + result.status + " | " + result.data);
+        console.log("failure:" + result.statusCode + " | " + result.data);
       }
 
-      alert(JSON.stringify(this.model));
+      console.log(JSON.stringify(this.model));
     },
     onReset(evt) {
       evt.preventDefault();
