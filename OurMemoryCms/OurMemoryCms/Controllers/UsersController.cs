@@ -69,10 +69,9 @@ namespace OurMemoryCms.Controllers
                 // map model to entity
                 var user = _mapper.Map<UserViewModel>(model);
 
-                // create user
-                //var newUser = await _userService.Create(user, model.Password);
-                // return Ok(newUser);
-                return Ok(user);
+                //create user
+                var newUser = await _userService.Create(user, model.Password);
+                return Ok(newUser);
             }
             catch (AppException ex)
             {

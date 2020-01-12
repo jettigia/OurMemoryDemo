@@ -29,7 +29,7 @@ namespace OurMemoryCms
             services.AddControllers();
 
             services.AddDbContext<OurMemoryContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+                options.UseMySql(Configuration.GetConnectionString("DefaultConnection"))
             );
 
             services.AddAutoMapper(typeof(ServiceProfile), typeof(UserProfile));
