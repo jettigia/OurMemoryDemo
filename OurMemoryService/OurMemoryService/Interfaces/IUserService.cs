@@ -8,7 +8,7 @@ namespace OurMemoryService.Interfaces
     {
         Task<UserViewModel> Authenticate(string username, string password);
         Task<UserViewModel> GetById(Guid id);
-        Task<UserViewModel> Create(UserViewModel user, string password);
-        Task<UserViewModel> Update(UserViewModel user, string password = null);
+        Task<UserViewModel> Create(RegisterViewModel user, string password);
+        Task<UserViewModel> Update(UpdateViewModel user, string password = null);
     }
 }
