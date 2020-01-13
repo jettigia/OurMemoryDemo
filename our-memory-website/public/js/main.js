@@ -241,8 +241,17 @@ $(window).on('load', function() {
 
 	});
 
+// Gallery JS
+// if(document.URL.indexOf("dashboard") >= 0){ 
+// 	document.getElementById( 'theTopHeader' ).style.backgroundColor = '#5F3076';
+// } else 
+// { 
+// 	document.getElementById( 'theTopHeader' ).style.backgroundColor = '#f8f9fa';
+// }
+/* #f8f9fa */
 
-	/*------------------
+
+/*------------------
 		Instafeed
 	--------------------*/
 	var userFeed = new Instafeed({

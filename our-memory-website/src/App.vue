@@ -1,6 +1,7 @@
 <template>
   <div id="app">
    
+
     <!-- Page Preloder -->
 	  <div id="preloder">
 		  <div class="loader"></div>
@@ -8,23 +9,19 @@
 
     <!-- Nav Bar -->
     <header class="header-section">
-		<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" role="navigation">
-    <div class="container">
-        <a class="navbar-brand" href="index.html"><img src="./assets/logo2-trans.png" alt="logo"></a>
+		<nav id="theTopHeader" class="navbar navbar-expand-lg navbar-light fixed-top color" role="navigation" style="background-color:#5F3076;">
+    <div class="container" style=" padding: 0; border: 0; margin: 0; width:100%;" >
+
+        <a class="navbar-brand" href="index.html"><img src="./assets/logo3-trans.png" alt="logo"></a>
+
         <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
             &#9776;
         </button>
-        <div class="collapse navbar-collapse" id="exCollapsingNavbar">
-            <ul class="nav navbar-nav">
-                <li class="nav-item"><router-link to="/about" class="nav-link">About</router-link></li>
-                <!-- <li class="nav-item"><a href="#" class="nav-link">Link</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Service</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">More</a></li> -->
-            </ul>
-            <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
+
+        <ul class="nav navbar-nav flex-row justify-content-between" style="position: absolute; top: 16px; right: 15%; "> 
                 <!-- <li class="nav-item order-2 order-md-1"><a href="#" class="nav-link" title="settings"><i class="fa fa-cog fa-fw fa-lg"></i></a></li> -->
-                <li class="dropdown order-1">
-                    <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle">Login <span class="caret"></span></button>
+                <li class="dropdown order-1" >
+                    <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle" style="color:white;">Login <span class="caret"></span></button>
                     <ul class="dropdown-menu dropdown-menu-right mt-2">
                        <li class="px-3 py-2">
                            <form class="form" role="form">
@@ -47,12 +44,26 @@
                         </li>
                     </ul>
                 </li>
+        </ul>
+
+        <div class="collapse navbar-collapse" id="exCollapsingNavbar" >
+            <ul class="nav navbar-nav" >
+                <li class="nav-item"><router-link to="/about" class="nav-link" style="color:white;">About</router-link></li>
+                <li class="nav-item"><router-link to="/Dashboard" class="nav-link" style="color:white;">My Dashboard</router-link></li>
+                <li class="nav-item"><router-link to="/RegistrationSuccess" class="nav-link" style="color:white;">Reg-Success [REMOVE]</router-link></li>
+                <li class="nav-item"><router-link to="/RegistrationUnSuccess" class="nav-link" style="color:white;">Reg-UnSuccess [REMOVE]</router-link></li>
+                <!-- <li class="nav-item"><a href="#" class="nav-link">Link</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Service</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">More</a></li> -->
             </ul>
+            
+            
+
         </div>
     </div>
 </nav>
 
-<div id="modalPassword" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- <div id="modalPassword" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -68,14 +79,15 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+
 	  <!-- <a href="index.html" class="site-logo"><img src="./assets/logo2-trans.png" alt="logo"></a>
       
-      <div class="header-controls">
+        <div class="header-controls">
 			  <button class="nav-switch-btn"><i class="fa fa-bars"></i></button>
-		  </div>
+		</div>
 
-      <ul class="main-menu">
+        <ul class="main-menu">
 			<li><router-link to="/">Home</router-link></li>
 			<li><router-link to="/about"> About</router-link></li> -->
 			<!-- <li>
@@ -87,11 +99,34 @@
 				</ul>
 			</li> -->
 			<!-- <li><router-link to="/registration"> Register</router-link></li>
-			</ul> -->
+		</ul> -->
 
 	</header>
 	<div class="clearfix"></div>
     <router-view />
+
+<!-- Footer section   -->
+	<footer class="footer-section">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-6 order-1 order-md-2">
+					<div class="footer-social-links">
+						<a href=""><i class="fa fa-pinterest"></i></a>
+						<a href=""><i class="fa fa-facebook"></i></a>
+						<a href=""><i class="fa fa-twitter"></i></a>
+						<a href=""><i class="fa fa-instagram"></i></a>
+					</div>
+				</div>
+				<div class="col-md-6 order-2 order-md-1">
+					<div class="copyright">
+              Designed by: Finite Reality Tech Co. - 2020
+          </div>	
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer section end  -->
+
   </div>
 </template>
 
