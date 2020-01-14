@@ -4,11 +4,15 @@
     <div id="main-page">
           
 	<div id="center-home-panel" class="container text-center">
-		<div class="row">
+		<div class="">
 
-			<div class="col-md-12 col-sm-12">
-				<h3 class="wow bounceIn" data-wow-delay="0.9s">Our Memory</h3>
-				<h1 class="wow fadeInUp" data-wow-delay="1.6s">Currently in development.</h1>
+			<div class="" style="top: 50%;">
+				<h3 class="wow bounceIn" data-wow-delay="0.9s">Welcome!</h3>
+				<h2 class="wow fadeInUp" data-wow-delay="1.6s">Our Memory is currently in development:</h2>
+				<h4></h4>
+        <br>
+        <router-link to="/about" class="btn btn-lg btn-default smoothScroll wow fadeInUp ">LEARN MORE</router-link>
+        <router-link to="/registration" class="btn btn-lg btn-danger smoothScroll wow fadeInUp">Try Now</router-link>
 			</div>
 
     </div>
@@ -39,7 +43,7 @@ home-html {
 .home {
   background-image: url("../assets/home-background-image.jpg");
   background-size: cover;
-  height: 90%;
+  height: 100%;
   /* padding-bottom: 0px 0px 19px 0px; */
 }
 #center-home-panel {
@@ -53,6 +57,7 @@ home-html {
   top: 35%;
 
   width: 70%;
+  /* height: 50%; */
   padding: 30px;
   background-color: #ffffffef;
   

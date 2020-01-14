@@ -460,6 +460,7 @@ ol {
 	padding-bottom: 27px;
 	position: relative;
 	z-index: 99;
+	border-bottom: 2px solid #1d1d1d;
 }
 
 .header-section.hs-bd {
@@ -715,6 +716,14 @@ ol {
 ---------------------*/
 
 .footer-section {
+
+   /* position: fixed; */
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   color: white;
+   text-align: center;
+   
 	background: #212121;
 	padding: 19px 40px;
 }
@@ -1380,3 +1389,7 @@ ol {
 .navbar .dropdown-menu .form-control {
     width: 200px;
 }
+
+
+/* ************************************************** */
+
