@@ -135,6 +135,12 @@ export default {
       show: true
     };
   },
+  async mounted() {
+    console.log('Registration Version 1.0.0.5');
+    var service = new UserService();
+    var result = await service.getVersion();
+    console.log(result.data);
+  },
   methods: {
     async onSubmit(evt) {
      evt.preventDefault();
@@ -151,6 +157,8 @@ export default {
         "username": this.model.username,
         "password": this.model.password
       });
+
+      this.model.password = '';
 
       if (result.status == 200) {
         this.$router.push('registration-success');

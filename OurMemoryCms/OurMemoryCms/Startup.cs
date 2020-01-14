@@ -14,6 +14,8 @@ namespace OurMemoryCms
 {
     public class Startup
     {
+        public const string VUE_CORS_POLICY = "VueCorsPolicy";
+        
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -27,7 +29,7 @@ namespace OurMemoryCms
             services.AddControllers();
 
             services.AddDbContext<OurMemoryContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("SmarterAspConnection"))
+                options.UseMySql(Configuration.GetConnectionString("DefaultConnection"))
             );
 
             services.AddAutoMapper(typeof(ServiceProfile), typeof(UserProfile));
@@ -44,15 +46,17 @@ namespace OurMemoryCms
 
             services.AddCors(options =>
             {
-                options.AddPolicy("VueCorsPolicy", builder =>
+                options.AddPolicy(VUE_CORS_POLICY, builder =>
                 {
                     builder
                       .AllowAnyHeader()
                       .AllowAnyMethod()
                       .AllowCredentials()
-                      .WithOrigins("http://localhost:8080");
+                      .WithOrigins("http://localhost:8080", "http://ourmemory.com", "http://ourmemory.com/registration", "http://finitech-001-site1.gtempurl.com");
                 });
             });
+
+            services.AddRouting(r => r.SuppressCheckForUnhandledSecurityMetadata = true);
 
         }
 
@@ -64,7 +68,7 @@ namespace OurMemoryCms
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors("VueCorsPolicy");
+            app.UseCors(VUE_CORS_POLICY);
 
             app.UseHttpsRedirection();
 

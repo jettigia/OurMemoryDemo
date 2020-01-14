@@ -6,6 +6,7 @@ namespace OurMemoryDb
     public class OurMemoryContext : DbContext
     {
         public OurMemoryContext(DbContextOptions<OurMemoryContext> options) : base(options) { }
+
         public DbSet<CommentEntity> CommentEntities { get; set; }
         public DbSet<PostEntity> PostEntities { get; set; }
         public DbSet<UserEntity> UserEntity { get; set; }

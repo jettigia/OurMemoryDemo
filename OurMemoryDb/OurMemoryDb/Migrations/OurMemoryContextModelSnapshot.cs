@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OurMemoryDb;
 
@@ -15,19 +16,20 @@ namespace OurMemoryDb.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.0")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("OurMemory.Entities.CommentEntity", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Comment")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("PostId")
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -40,10 +42,10 @@ namespace OurMemoryDb.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Content")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -54,35 +56,25 @@ namespace OurMemoryDb.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("varchar(320) CHARACTER SET utf8mb4")
-                        .HasMaxLength(320);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<byte[]>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("longblob");
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<byte[]>("PasswordSalt")
-                        .IsRequired()
-                        .HasColumnType("longblob");
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4")
-                        .HasMaxLength(255);
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

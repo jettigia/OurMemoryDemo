@@ -26,13 +26,13 @@
                        <li class="px-3 py-2">
                            <form class="form" role="form">
                                 <div class="form-group">
-                                    <input id="emailInput" placeholder="Email" class="form-control form-control-sm" type="text" required="">
+                                    <input v-model="model.username" id="usernameInput" placeholder="Username" class="form-control form-control-sm" type="text" required="">
                                 </div>
                                 <div class="form-group">
-                                    <input id="passwordInput" placeholder="Password" class="form-control form-control-sm" type="text" required="">
+                                    <input v-model="model.password" id="passwordInput" placeholder="Password" class="form-control form-control-sm" type="text" required="">
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                                    <button type="submit" v-on:click="login" class="btn btn-primary btn-block">Login</button>
                                 </div>
 								<div class="form-group text-center">
                                     <small><router-link to="/registration"> Register</router-link></small>
@@ -130,5 +130,37 @@
   </div>
 </template>
 
+<script>
+import UserService from "@/components/user-service";
 
+    export default {
+        data() {
+    return {
+      model: {
+        username: '',
+        password: '',
+      },
+      show: true
+    };
+  },
+  methods: {
+    async login(evt) {
+      evt.preventDefault();
 
+       var service = new UserService();
+      var result = await service.authenticate({
+        "username": this.model.username,
+        "password": this.model.password
+      });
+
+    if (result.status == 200) {
+        console.log("success: " + result.data);
+      } else {
+        console.log("failure:" + result.status + " | " + result.data);
+      }
+
+      alert(JSON.stringify(this.model));
+    }
+  }
+}
+</script>
