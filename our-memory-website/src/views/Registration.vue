@@ -24,12 +24,30 @@
           ></b-form-input>
         </b-form-group>
 
-        <b-form-group id="name.Label" label="Your Name:" label-for="nameInput">
+      <b-form-group id="firstName.Label" label="First Name:" label-for="firstNameInput">
           <b-form-input
-            id="nameInput"
-            v-model="model.name"
+            id="firstNameInput"
+            v-model="model.firstName"
             required
-            placeholder="Enter name"
+            placeholder="Enter first name"
+          ></b-form-input>
+        </b-form-group>
+
+        <b-form-group id="lastName.Label" label="Last Name:" label-for="lastNameInput">
+          <b-form-input
+            id="lastNameInput"
+            v-model="model.lastName"
+            required
+            placeholder="Enter last name"
+          ></b-form-input>
+        </b-form-group>
+
+        <b-form-group id="username.Label" label="Username:" label-for="username">
+          <b-form-input
+            id="username"
+            v-model="model.username"
+            required
+            placeholder="Enter username"
           ></b-form-input>
         </b-form-group>
 
@@ -101,39 +119,45 @@ home-html {
 </style>
 
 <script>
-import axios from "axios";
-import ApiService from "..\\components\\ApiService.vue";
+import UserService from "@/components/user-service";
 
 export default {
   data() {
     return {
       model: {
-        email: "",
-        name: "",
-        confirmPassword: "",
-        password: ""
+        email: '',
+        firstName: '',
+        lastName: '',
+        username: '',
+        confirmPassword: '',
+        password: ''
       },
       show: true
     };
   },
   methods: {
     async onSubmit(evt) {
-      evt.preventDefault();
+     evt.preventDefault();
 
-      var result = await ApiService.post("\\Account\\Register", {
-        "model.email": this.model.email,
-        "model.name": this.model.name,
-        "model.confirmPassword": this.model.confirmPassword,
-        "model.password": this.model.password
+  if (this.model.password != this.model.confirmPassword) {
+    return;
+  }
+
+      var service = new UserService();
+      var result = await service.register({
+        "email": this.model.email,
+        "firstName": this.model.firstName,
+        "lastName": this.model.lastName,
+        "username": this.model.username,
+        "password": this.model.password
       });
 
       if (result.status == 200) {
-        console.log("success: " + result.data);
+        this.$router.push('registration-success');
       } else {
-        console.log("failure:" + result.status + " | " + result.data);
+        // Todo: Display errors. Do not re-route.
+        this.$router.push('registration-unsuccess');
       }
-
-      alert(JSON.stringify(this.model));
     },
     onReset(evt) {
       evt.preventDefault();
