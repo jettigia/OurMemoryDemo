@@ -16,6 +16,10 @@ namespace OurMemoryDb
 
         public async Task<UserEntity> CreateEntityAsync(UserEntity entity)
         {
+            var isEmailAddressUnique = await _context.UserEntity.AnyAsync(user => user.Email == entity.Email);
+            if (!isEmailAddressUnique)
+                throw new ApplicationException("Email address currently being used.");
+
             _context.UserEntity.Add(entity);
             await _context.SaveChangesAsync();
             return entity;
