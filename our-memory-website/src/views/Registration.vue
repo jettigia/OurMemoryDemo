@@ -158,9 +158,8 @@ export default {
         "password": this.model.password
       });
 
-      this.model.password = '';
-
-      if (result.status == 200) {
+debugger;
+      if (result.status === 200) {
         this.$router.push('registration-success');
       } else {
         // Todo: Display errors. Do not re-route.

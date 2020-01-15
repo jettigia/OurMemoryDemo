@@ -148,7 +148,7 @@ import UserService from "@/components/user-service";
       evt.preventDefault();
 
        var service = new UserService();
-      var result = await service.authenticate({
+       var result = await service.authenticate({
         "username": this.model.username,
         "password": this.model.password
       });
@@ -158,8 +158,6 @@ import UserService from "@/components/user-service";
       } else {
         console.log("failure:" + result.status + " | " + result.data);
       }
-
-      alert(JSON.stringify(this.model));
     }
   }
 }

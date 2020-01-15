@@ -17,14 +17,8 @@ class UserService {
    * Register a user.
    * @param {A entity Object} entity
    */
-  register(entity) {
-    const apiCall = axios.post(this.url + registerPath, entity)
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  async register(entity) {
+    const apiCall = await axios.post(this.url + registerPath, entity);
     return apiCall;
   }
 
@@ -32,17 +26,11 @@ class UserService {
    * Register a user.
    * @param {A entity Object} entity
    */
-  getVersion(entity) {
-    const apiCall = axios.get(this.url + versionPath, entity, {
+  async getVersion(entity) {
+    const apiCall = await axios.get(this.url + versionPath, entity, {
       headers: {
         'Access-Control-Allow-Origin': '*'
-      }})
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+      }});
     return apiCall;
   }
 
@@ -50,14 +38,8 @@ class UserService {
    * User Login.
    * @param {A entity Object} entity
    */
-  authenticate(entity) {
-    const apiCall = axios.post(this.url + authenticatePath, entity)
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  async authenticate(entity) {
+    const apiCall = await axios.post(this.url + authenticatePath, entity);
     return apiCall;
   }
 }
