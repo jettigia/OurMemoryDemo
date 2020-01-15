@@ -154,9 +154,9 @@ import UserService from "@/components/user-service";
       });
 
     if (result.status == 200) {
-        console.log("success: " + result.data);
+        this.$router.push('dashboard');
       } else {
-        console.log("failure:" + result.status + " | " + result.data);
+        // TODO: Display error message.
       }
     }
   }

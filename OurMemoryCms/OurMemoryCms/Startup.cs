@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -9,13 +10,15 @@ using OurMemoryDb;
 using OurMemoryService.Interfaces;
 using OurMemoryService.Maps;
 using OurMemoryService.Services;
+using System;
+using System.Threading.Tasks;
 
 namespace OurMemoryCms
 {
     public class Startup
     {
         public const string VUE_CORS_POLICY = "VueCorsPolicy";
-        
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -27,6 +30,19 @@ namespace OurMemoryCms
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/users/authenticate";
+                    options.SlidingExpiration = true;
+                    options.ExpireTimeSpan = TimeSpan.FromDays(7);
+                    options.Events.OnRedirectToLogin = (context) =>
+                    {
+                        context.Response.StatusCode = 401;
+                        return Task.CompletedTask;
+                    };
+                });
 
             services.AddDbContext<OurMemoryContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("DefaultConnection"))
@@ -74,12 +90,14 @@ namespace OurMemoryCms
 
             app.UseRouting();
 
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-            });            
+            });
         }
     }
 }

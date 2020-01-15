@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -7,6 +8,8 @@ using OurMemory.Configuration;
 using OurMemory.Models;
 using OurMemoryService.Interfaces;
 using System;
+using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using WebApi.Helpers;
 
@@ -38,26 +41,18 @@ namespace OurMemoryCms.Controllers
             if (user == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
 
-            //var tokenHandler = new JwtSecurityTokenHandler();
-            //var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
-            //var tokenDescriptor = new SecurityTokenDescriptor
-            //{
-            //    Subject = new ClaimsIdentity(new Claim[]
-            //    {
-            //        new Claim(ClaimTypes.Name, user.Id.ToString())
-            //    }),
-            //    Expires = DateTime.UtcNow.AddDays(7),
-            //    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            //};
-            //var token = tokenHandler.CreateToken(tokenDescriptor);
-            //var tokenString = tokenHandler.WriteToken(token);
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, model.Username)
+            };
+
+            var userIdentity = new ClaimsIdentity(claims, "login");
+
+            ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
+            await HttpContext.SignInAsync(principal);
 
             // return basic user info and authentication token
-            return Ok(new
-            {
-                Username = user.Username,
-                //Token = tokenString
-            });
+            return Ok(user);
         }
 
         [AllowAnonymous]
@@ -99,6 +94,13 @@ namespace OurMemoryCms.Controllers
                 // return error message if there was an exception
                 return BadRequest(new { message = ex.Message });
             }
+        }
+
+        [HttpPost("logout")]
+        public async Task<IActionResult> LogoutAsync(Guid id, [FromBody]UserViewModel model)
+        {
+            await HttpContext.SignOutAsync();
+            return Ok();
         }
 
         [HttpGet]
