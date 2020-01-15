@@ -158,6 +158,9 @@ import UserService from "@/components/user-service";
       } else {
         // TODO: Display error message.
       }
+    },
+    async logout(evt) {
+        this.$router.push('home');
     }
   }
 }
