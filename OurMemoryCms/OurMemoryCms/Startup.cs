@@ -68,7 +68,8 @@ namespace OurMemoryCms
                       .AllowAnyHeader()
                       .AllowAnyMethod()
                       .AllowCredentials()
-                      .WithOrigins("http://localhost:8080", "http://ourmemory.com", "http://ourmemory.com/registration", "http://finitech-001-site1.gtempurl.com");
+                      // Todo Make configurable
+                      .WithOrigins("http://ourmemory.com", "http://localhost:8080");
                 });
             });
 

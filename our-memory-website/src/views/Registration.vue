@@ -136,10 +136,10 @@ export default {
     };
   },
   async mounted() {
-    console.log('Registration Version 1.0.0.5');
     var service = new UserService();
     var result = await service.getVersion();
-    console.log(result.data);
+    var postResult = await service.getVersionPost();
+    console.log(postResult.data + ' || ' + result.data + ' || ' + 'Registration Version 1.0.0.7');
   },
   methods: {
     async onSubmit(evt) {
@@ -158,7 +158,6 @@ export default {
         "password": this.model.password
       });
 
-debugger;
       if (result.status === 200) {
         this.$router.push('registration-success');
       } else {

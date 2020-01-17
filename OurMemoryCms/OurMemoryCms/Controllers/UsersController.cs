@@ -106,9 +106,17 @@ namespace OurMemoryCms.Controllers
         [HttpGet]
         [AllowAnonymous]
         [Route("version")]
-        public ActionResult<PostViewModel> GetVersion()
+        public ActionResult GetVersion()
         {
-            return Ok("Version: 1.0.0.5");
+            return Ok("Version: 1.0.0.8");
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("version")]
+        public ActionResult GetVersionPost()
+        {
+            return Ok("Post Version: 1.0.0.8");
         }
     }
 }
