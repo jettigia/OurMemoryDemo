@@ -5,6 +5,8 @@ namespace OurMemory.Models
 {
     public class TextMemoryViewModel
     {
+        public int Id { get; set;
+        }
         public string Content { get; set; }
 
         public List<CommentViewModel> Comments { get; set; }

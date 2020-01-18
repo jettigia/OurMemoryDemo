@@ -23,6 +23,7 @@ namespace OurMemoryCms.Controllers
     {
         private IUserService _userService;
         private IMapper _mapper;
+        private const string USER_ID_CLAIM = "UserIdClaim";
 
         public UsersController(
             IUserService userService,
@@ -34,7 +35,7 @@ namespace OurMemoryCms.Controllers
 
         [AllowAnonymous]
         [HttpPost("authenticate")]
-        public async Task<IActionResult> Authenticate([FromBody]AuthenticateViewModel model)
+        public async Task<IActionResult> Authenticate([FromBody]AuthenticateInputModel model)
         {
             var user = await _userService.Authenticate(model.Username, model.Password);
 
@@ -57,7 +58,7 @@ namespace OurMemoryCms.Controllers
 
         [AllowAnonymous]
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody]RegisterViewModel model)
+        public async Task<IActionResult> Register([FromBody]RegisterInputModel model)
         {
             try
             {

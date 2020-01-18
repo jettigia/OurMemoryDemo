@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace OurMemoryDb.Migrations
 {
-    public partial class InitialDatabaseCreation : Migration
+    public partial class InitialDbCreation : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -24,10 +24,10 @@ namespace OurMemoryDb.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Email = table.Column<string>(maxLength: 320, nullable: false),
-                    FirstName = table.Column<string>(maxLength: 255, nullable: false),
-                    LastName = table.Column<string>(maxLength: 255, nullable: false),
-                    Username = table.Column<string>(maxLength: 255, nullable: false),
+                    Email = table.Column<string>(maxLength: 8, nullable: false),
+                    FirstName = table.Column<string>(maxLength: 50, nullable: false),
+                    LastName = table.Column<string>(maxLength: 50, nullable: false),
+                    Username = table.Column<string>(maxLength: 10, nullable: false),
                     PasswordHash = table.Column<byte[]>(nullable: false),
                     PasswordSalt = table.Column<byte[]>(nullable: false)
                 },
@@ -59,6 +59,18 @@ namespace OurMemoryDb.Migrations
                 name: "IX_CommentEntities_PostId",
                 table: "CommentEntities",
                 column: "PostId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserEntity_Email",
+                table: "UserEntity",
+                column: "Email",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserEntity_Username",
+                table: "UserEntity",
+                column: "Username",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

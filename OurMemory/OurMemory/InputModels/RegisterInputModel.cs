@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace OurMemory.Models
 {
-    public class RegisterViewModel
+    public class RegisterInputModel
     {
         [Required]
         public string FirstName { get; set; }

@@ -1,5 +1,6 @@
 using OurMemory.Configuration;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace OurMemory.Entities
@@ -8,16 +9,16 @@ namespace OurMemory.Entities
     {
         public Guid Id { get; set; }
 
-        [Required, StringLength(320)]
+        [Required, StringLength(125)]
         public string Email { get; set; }
 
-        [Required, StringLength(255)]
+        [Required, StringLength(24)]
         public string FirstName { get; set; }
 
-        [Required, StringLength(255)]
+        [Required, StringLength(24)]
         public string LastName { get; set; }
 
-        [Required, StringLength(255, MinimumLength = 8)]
+        [Required, StringLength(24, MinimumLength = 8)]
         public string Username { get; set; }
 
         [Required]
@@ -25,5 +26,7 @@ namespace OurMemory.Entities
 
         [Required]
         public byte[] PasswordSalt { get; set; }
+
+        public virtual List<TextMemoryEntity> Memories { get; set; }
     }
 }

@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace OurMemoryDb
 {
-    public interface IPostRepository : IRepository<PostEntity>
+    public interface IMemoryRepository : IRepository<TextMemoryEntity>
     {
-        Task<List<PostEntity>> ReadAllEntityAsync(Guid userId);
+        Task<List<TextMemoryEntity>> ReadAllEntityAsync(Guid userId);
     }
 }

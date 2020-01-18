@@ -1,36 +1,43 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using OurMemory.Models;
 using OurMemoryService.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace OurMemoryCms.Controllers
 {
+    [Authorize]
+    [EnableCors(Startup.VUE_CORS_POLICY)]
     [Route("api/[controller]")]
     [ApiController]
-    public class PostController : ControllerBase
+    
+    public class TextMemoryController : ControllerBase
     {
-        private readonly IPostService _postService;
+        private readonly IMemoryService _memoryService;
         private const string CANNOT_CREATE = "Could not create the post. ";
 
-        public PostController(IPostService postService)
+        public TextMemoryController(IMemoryService memoryService)
         {
-            _postService = postService;
+            _memoryService = memoryService;
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(PostViewModel postViewModel)
+        public async Task<ActionResult> CreateTextModel(TextMemoryInputModel textMemoryViewModel)
         {
             try
             {
-                var newPost = await _postService.CreateAsync(postViewModel);
+                var userId = HttpContext.User.Identity.Name;
+                var newPost = await _memoryService.CreateTextMemoryAsync(userId, textMemoryViewModel);
 
                 if (newPost != null)
                 {
                     var resourceUrl = Path.Combine(Request.Path.ToString(), Uri.EscapeUriString(newPost.Id.ToString()));
-                    return Created(resourceUrl, newPost);                    
+                    return Created(resourceUrl, newPost);
                 }
                 else
                 {
@@ -40,15 +47,15 @@ namespace OurMemoryCms.Controllers
             catch (Exception ex)
             {
                 return BadRequest(CANNOT_CREATE + ex.Message);
-            }            
+            }
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<PostViewModel>>> GetMyPosts()
+        public async Task<ActionResult<List<TextMemoryViewModel>>> GetMyPosts()
         {
             try
             {
-                var myPosts = await _postService.ReadAsync(Guid.NewGuid());
+                var myPosts = await _memoryService.ReadAsync(Guid.NewGuid());
                 return myPosts;
             }
             catch (Exception ex)
@@ -59,11 +66,11 @@ namespace OurMemoryCms.Controllers
 
         [HttpGet]
         [Route("{postId}")]
-        public async Task<ActionResult<PostViewModel>> Get(Guid postId)
+        public async Task<ActionResult<TextMemoryViewModel>> Get(Guid postId)
         {
             try
             {
-                var myPosts = await _postService.ReadAsync(postId, Guid.NewGuid());
+                var myPosts = await _memoryService.ReadAsync(postId, Guid.NewGuid());
                 return myPosts;
             }
             catch (Exception ex)
@@ -74,11 +81,11 @@ namespace OurMemoryCms.Controllers
 
         [HttpPut]
         [Route("{postId}")]
-        public async Task<ActionResult<PostViewModel>> UpdatePost(PostViewModel post)
+        public async Task<ActionResult<TextMemoryViewModel>> UpdatePost(TextMemoryViewModel post)
         {
             try
             {
-                var updatedPost = await _postService.UpdateAsync(post);
+                var updatedPost = await _memoryService.UpdateAsync(post);
                 return updatedPost;
             }
             catch (Exception ex)
@@ -89,11 +96,11 @@ namespace OurMemoryCms.Controllers
 
         [HttpDelete]
         [Route("{postId}")]
-        public async Task<ActionResult<bool>> DeletePost(PostViewModel post)
+        public async Task<ActionResult<bool>> DeletePost(TextMemoryViewModel post)
         {
             try
             {
-                var isDeleted = await _postService.DeleteAsync(post);
+                var isDeleted = await _memoryService.DeleteAsync(post);
                 return isDeleted;
             }
             catch (Exception ex)

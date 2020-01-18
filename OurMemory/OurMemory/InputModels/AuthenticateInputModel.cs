@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace OurMemory.Models
 {
-    public class AuthenticateViewModel
+    public class AuthenticateInputModel
     {
         [Required]
         public string Username { get; set; }

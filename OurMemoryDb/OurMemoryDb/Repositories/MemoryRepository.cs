@@ -6,29 +6,29 @@ using System.Threading.Tasks;
 
 namespace OurMemoryDb
 {
-    public class PostRepository : IPostRepository
+    public class MemoryRepository : IMemoryRepository
     {
         private readonly OurMemoryContext _context;
 
-        public PostRepository(OurMemoryContext context)
+        public MemoryRepository(OurMemoryContext context)
         {
             _context = context;
         }
 
-        public async Task<PostEntity> CreateEntityAsync(PostEntity entity)
+        public async Task<TextMemoryEntity> CreateEntityAsync(TextMemoryEntity entity)
         {
             await _context.PostEntities.AddAsync(entity);
             await _context.SaveChangesAsync();
             return entity;
         }
 
-        public async Task<PostEntity> ReadEntityAsync(Guid postId)
+        public async Task<TextMemoryEntity> ReadEntityAsync(Guid postId)
         {
             var entity = await _context.PostEntities.FindAsync(postId);
             return entity;
         }
 
-        public async Task<List<PostEntity>> ReadAllEntityAsync(Guid userId)
+        public async Task<List<TextMemoryEntity>> ReadAllEntityAsync(Guid userId)
         {
             var connection = _context.Database.GetDbConnection();
             _context.SaveChanges();
@@ -36,7 +36,7 @@ namespace OurMemoryDb
             return entity;
         }
 
-        public async Task<PostEntity> UpdateEntityAsync(PostEntity entity)
+        public async Task<TextMemoryEntity> UpdateEntityAsync(TextMemoryEntity entity)
         {
             var dbEntity = await ReadEntityAsync(entity.Id);
             dbEntity.Content = entity.Content;
@@ -45,7 +45,7 @@ namespace OurMemoryDb
             return dbEntity;
         }
 
-        public async Task<bool> DeleteEntityAsync(PostEntity entity)
+        public async Task<bool> DeleteEntityAsync(TextMemoryEntity entity)
         {
             try
             {

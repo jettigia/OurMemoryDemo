@@ -52,12 +52,12 @@ namespace OurMemoryCms
 
             // Services
             services.AddScoped<ICommentService, CommentService>();
-            services.AddScoped<IPostService, PostService>();
+            services.AddScoped<IMemoryService, MemoryService>();
             services.AddScoped<IUserService, UserService>();
 
             // Repositories
             services.AddScoped<ICommentRepository, CommentRepository>();
-            services.AddScoped<IPostRepository, PostRepository>();
+            services.AddScoped<IMemoryRepository, MemoryRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddCors(options =>

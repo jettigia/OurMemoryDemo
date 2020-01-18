@@ -1,13 +1,12 @@
-﻿using OurMemory.Interfaces;
-using System;
+﻿using System;
 
 namespace OurMemory.Entities
 {
-    public class CommentEntity : IComment
+    public class CommentEntity
     {
         public Guid Id { get; set; }
         public string Comment { get; set; }
         public Guid PostId { get; set; }
-        public virtual PostEntity Post { get; set; }
+        public virtual TextMemoryEntity Post { get; set; }
     }
 }
