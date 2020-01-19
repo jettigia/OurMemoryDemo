@@ -5,9 +5,52 @@
           
 	<div id="center-home-panel" class="container text-center">
 
+<div id="modalImage1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                
+                <button type="button" class="close font-weight-light" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+              <!-- Terms o service -->
+<div >
+<div style="left:67.34px;top:52.56px" class="cls_002"><span class="cls_002">OurMemory Terms and Conditions</span></div>
+<div style="left:53.88px;top:128.66px" class="cls_004"><span class="cls_004">Terms and Conditions</span></div>
+<div style="left:53.16px;top:170.06px" class="cls_003"><span class="cls_003">Last updated: 1/17/2020</span></div>
+<div style="left:53.16px;top:205.82px" class="cls_003"><span class="cls_003">Please read these Terms and Conditions carefully before using</span></div>
+<div style="left:53.64px;top:220.46px" class="cls_003"><span class="cls_003">the </span><A HREF="http://www.ourmemory.com/">http://www.ourmemory.com</A> website and the OurMemory mobile<span class="cls_005"> </span><span class="cls_003">application (the "Service")</span></div>
+<div style="left:53.64px;top:235.22px" class="cls_003"><span class="cls_003">operated by OurMemory</span><span class="cls_005">.</span></div>
+<div style="left:53.16px;top:271.13px" class="cls_003"><span class="cls_003">Your access to and use of the Service is conditioned on your acceptance of and compliance with</span></div>
+<div style="left:53.64px;top:285.77px" class="cls_003"><span class="cls_003">these Terms. These Terms apply to all visitors, users and others who access or use the Service.</span></div>
+<div style="left:53.16px;top:315.77px" class="cls_006"><span class="cls_006">By accessing or using the Service you agree to be bound by these Terms. If you disagree</span></div>
+<div style="left:53.64px;top:329.33px" class="cls_006"><span class="cls_006">with any part of the terms then you may not access the Service.</span></div>
+<div style="left:53.16px;top:359.21px" class="cls_006"><span class="cls_006">Content</span></div>
+<div style="left:53.16px;top:389.21px" class="cls_003"><span class="cls_003">Our Service allows you to post, link, store, share and otherwise make available certain information,</span></div>
+<div style="left:53.64px;top:403.85px" class="cls_003"><span class="cls_003">text, graphics, videos, or other material ("Content").</span></div>
+<div style="left:53.16px;top:442.63px" class="cls_003"><span class="cls_003">Our Service may contain links to third-party web sites or services that are not owned or controlled</span></div>
+<div style="left:53.64px;top:457.39px" class="cls_003"><span class="cls_003">by OurMemory.</span></div>
+<div style="left:53.16px;top:493.27px" class="cls_003"><span class="cls_003">OurMemory has no control over, and assumes no responsibility for, the content, privacy policies, or</span></div>
+<div style="left:53.64px;top:511.39px" class="cls_003"><span class="cls_003">practices of any third party web sites or services. You further acknowledge and agree that</span></div>
+<div style="left:53.64px;top:529.51px" class="cls_003"><span class="cls_003">OurMemory shall not be responsible or liable, directly or indirectly, for any  damage or loss caused</span></div>
+<div style="left:53.64px;top:547.63px" class="cls_003"><span class="cls_003">or alleged to be caused by or in connection with use of or reliance on any such content, goods or</span></div>
+<div style="left:53.64px;top:565.75px" class="cls_003"><span class="cls_003">services available on or through any such web sites or services.</span></div>
+<div style="left:53.16px;top:599.26px" class="cls_006"><span class="cls_006">Changes</span></div>
+<div style="left:53.16px;top:629.26px" class="cls_003"><span class="cls_003">We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a</span></div>
+<div style="left:53.64px;top:647.26px" class="cls_003"><span class="cls_003">revision is material we will try to provide at least 15 days' notice prior to any new terms taking effect.</span></div>
+<div style="left:53.64px;top:665.14px" class="cls_003"><span class="cls_003">What constitutes a material change will be determined at our sole discretion.</span></div>
+<div style="left:53.16px;top:698.26px" class="cls_006"><span class="cls_006">Contact Us</span></div>
+<div style="left:53.16px;top:728.14px" class="cls_003"><span class="cls_003">If you have any questions about these Terms, please contact us.</span></div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+
   <div class="registration" style="text-align: center;">
     <h1>Registration</h1>
-    <div style="width: 50%; left: 25%; display: inline-block">
+    <br>
+    <div class="regBody">
       <b-form @submit="onSubmit" @reset="onReset" v-if="show">
         <b-form-group
           id="emailLabel"
@@ -24,7 +67,9 @@
           ></b-form-input>
         </b-form-group>
 
-      <b-form-group id="firstName.Label" label="First Name:" label-for="firstNameInput">
+      <div style="display:inline;">
+
+      <b-form-group id="firstName.Label" label="First Name:" label-for="firstNameInput" style="display:inline;float:left;width:48%;">
           <b-form-input
             id="firstNameInput"
             v-model="model.firstName"
@@ -32,8 +77,7 @@
             placeholder="Enter first name"
           ></b-form-input>
         </b-form-group>
-
-        <b-form-group id="lastName.Label" label="Last Name:" label-for="lastNameInput">
+        <b-form-group id="lastName.Label" label="Last Name:" label-for="lastNameInput" style="display:inline;float:right;width:48%;">
           <b-form-input
             id="lastNameInput"
             v-model="model.lastName"
@@ -41,6 +85,8 @@
             placeholder="Enter last name"
           ></b-form-input>
         </b-form-group>
+
+        </div>
 
         <b-form-group id="username.Label" label="Username:" label-for="username">
           <b-form-input
@@ -51,10 +97,13 @@
           ></b-form-input>
         </b-form-group>
 
+        <div style="display:inline;">
+
         <b-form-group
           id="passwordLabel"
           label="password:"
           label-for="passwordInput"
+          style="display:inline;float:left;width:48%;"
         >
           <b-form-input
             id="passwordInput"
@@ -69,6 +118,7 @@
           id="confirmpasswordLabel"
           label="Confirm password:"
           label-for="input-3"
+          style="display:inline;float:right;width:48%;"
           ><b-form-input
             id="confirmpasswordInput"
             v-model="model.confirmPassword"
@@ -78,7 +128,17 @@
           ></b-form-input>
         </b-form-group>
 
-        <b-button class="btn btn-lg btn-default smoothScroll wow fadeInUp" type="submit" variant="primary">Submit</b-button>
+        </div>
+        
+        <br>
+
+        <b-button style="width:100%;" class="btn btn-lg btn-default smoothScroll wow fadeInUp" type="submit" variant="warning">Sign up</b-button>
+
+        <br><br>
+        <p>
+          By signing up, you agree to our<br>
+          <a href="#" data-toggle="modal" data-target="#modalImage1">Terms & Privacy Policy</a>
+        </p>
         <!-- <b-button class="btn btn-lg btn-default smoothScroll wow fadeInUp" type="reset" variant="danger">Reset</b-button> -->
       </b-form>
     </div>
@@ -116,54 +176,56 @@ home-html {
   background-color: #ffffffef;
   
 }
+.regBody {
+  width: 50%; 
+  left: 25%; 
+  display: inline-block;
+}
+
+@media only screen and (max-width: 600px) {
+  .regBody {
+    width: 100%; 
+    left: 25%; 
+    display: inline-block;
+  }
+}
+
 </style>
 
 <script>
-import UserService from "@/components/user-service";
+import axios from "axios";
+import ApiService from "..\\components\\ApiService.vue";
 
 export default {
   data() {
     return {
       model: {
-        email: '',
-        firstName: '',
-        lastName: '',
-        username: '',
-        confirmPassword: '',
-        password: ''
+        email: "",
+        name: "",
+        confirmPassword: "",
+        password: ""
       },
       show: true
     };
   },
-  async mounted() {
-    var service = new UserService();
-    var result = await service.getVersion();
-    var postResult = await service.getVersionPost();
-    console.log(postResult.data + ' || ' + result.data + ' || ' + 'Registration Version 1.0.0.7');
-  },
   methods: {
     async onSubmit(evt) {
-     evt.preventDefault();
+      evt.preventDefault();
 
-  if (this.model.password != this.model.confirmPassword) {
-    return;
-  }
-
-      var service = new UserService();
-      var result = await service.register({
-        "email": this.model.email,
-        "firstName": this.model.firstName,
-        "lastName": this.model.lastName,
-        "username": this.model.username,
-        "password": this.model.password
+      var result = await ApiService.post("\\Account\\Register", {
+        "model.email": this.model.email,
+        "model.name": this.model.name,
+        "model.confirmPassword": this.model.confirmPassword,
+        "model.password": this.model.password
       });
 
-      if (result.status === 200) {
-        this.$router.push('registration-success');
+      if (result.status == 200) {
+        console.log("success: " + result.data);
       } else {
-        // Todo: Display errors. Do not re-route.
-        this.$router.push('registration-unsuccess');
+        console.log("failure:" + result.status + " | " + result.data);
       }
+
+      alert(JSON.stringify(this.model));
     },
     onReset(evt) {
       evt.preventDefault();
