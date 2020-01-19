@@ -1,18 +1,22 @@
 <template>
-   <div style="height:100%;">
-      <!-- Portfolio section  -->
+   <div style="height:88.6%;z-index:-1;" >
+      <!-- Memory Display section  -->
 
 <div id="modalImage1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog-centered">
         <div class="modal-content">
+
             <div class="modal-header">
                 
                 <button type="button" class="close font-weight-light" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-				<img src="https://picsum.photos/1280/800?random" alt="" title="" height="100%" />
+				<div style="margin: 0 auto; width:50%;">
+				<img src="https://picsum.photos/1280/800?random" alt="" title="Image Memory"/>
                 <p>Image description here..</p>
+				</div>
             </div>
+
         </div>
     </div>
 </div>
@@ -39,8 +43,9 @@
   				</div>
   				<input type="checkbox" class="dd-input" id="test">
   				<ul class="dd-menu">
-      				<li>Text Memory</li>
-      				<li>Photo Memory</li>
+      				<li><router-link to="/NewTextMemory">Text Memory</router-link></li>
+      				<li><router-link to="/NewPhotoMemory">Photo Memory</router-link></li>
+					<li><router-link to="/NewVideoMemory">Video Memory</router-link></li>
     			</ul>
 			</label>
 
@@ -50,8 +55,8 @@
   				</div>
   				<input type="checkbox" class="dd-input" id="test">
   				<ul class="dd-menu">
-      				<li>Name</li>
-      				<li>Date Created</li>
+      				<li>✔ Date Created</li>
+					<li>Name</li>
       				<li class="divider"></li>
         			<li>✔ Ascending</li>
 					<li>Decending</li>
@@ -64,79 +69,73 @@
 
             <div class="Folders">
 				<!-- Folders -->
-				<div style="height:100%; width:100%;">
+				<div style="height:100%; width:100%;" id="list-example" class="list-group">
+
 					<p style="padding-top:15%;padding-left:10%;font-size:12px;">Albums</p>
 
-					<div style="height:5%; width:100%;">
-						<p style="padding-left:10%;">November 2019</p>
-					</div>
-					<div style="height:5%; width:100%;">
-						<p style="padding-left:10%;">Janurary 2020</p>
-					</div>
-					<div style="height:5%; width:100%;">
-						<p style="padding-left:10%;">February 2020</p>
-					</div>
-					<div style="height:5%; width:100%;">
-						<p style="padding-left:10%;">March 2020</p>
-					</div>
+					<a class="list-group-item list-group-item-action" href="#list-item-1">November 2019</a>
+  					<a class="list-group-item list-group-item-action" href="#list-item-2">Janurary 2020</a>
+  					<a class="list-group-item list-group-item-action" href="#list-item-3">February 2020</a>
+  					<a class="list-group-item list-group-item-action" href="#list-item-4">March 2020</a>
 				</div>
 			</div>
 
             <div class="Gallery"> 
 				<!-- Gallery -->
 
-        <div width="100%">
-		<div class="GalleryContainer">
-			<p>November 2019</p>
+        <div style="height:80%; width:100%;">
+		<div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example GalleryContainer">
+
+			<p id="list-item-1">November 2019</p>
 			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image" /></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image"/></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image" /></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image"/></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image" /></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image"/></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image" /></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image"/></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image"/></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image" /></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image"/></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image" /></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image"/></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image" /></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image"/></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
 			<div class="clear"></div>
 			<br>
-			<p>Janurary 2020</p>
-            <a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image" /></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image"/></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image" /></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image"/></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
+			<p id="list-item-2">Janurary 2020</p>
+            <a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image" /></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image"/></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image" /></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image"/></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
 			<div class="clear"></div>
 			<br>
-			<p>February 2020</p>
-            <a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image" /></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image"/></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image" /></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image"/></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
+			<p id="list-item-3">February 2020</p>
+            <a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image" /></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image"/></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image" /></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image"/></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
 			<div class="clear"></div>
 			<br>
-			<p>March 2020</p>
-            <a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image" /></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image"/></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image" /></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image"/></a>
-			<a href="https://picsum.photos/600/400?random"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
+			<p id="list-item-4">March 2020</p>
+            <a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image" /></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image"/></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image" /></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title="Beautiful Image"/></a>
+			<a href="#" data-toggle="modal" data-target="#modalImage1"><img src="https://picsum.photos/150/150?random" alt="" title=""/></a>
 			<div class="clear"></div>
 			
 
@@ -189,6 +188,7 @@
   
   	.Gallery { 
 		  grid-area: Gallery;
+		  height: 100%;
 	}
 	.GalleryContainer {
 		padding-right:15px;    
@@ -196,6 +196,7 @@
 		margin-right:15%;    
 		margin-left:auto;
 		overflow:auto; 
+		height: 100%;
 	}
 
 	/* ----------------------------------------------------------------- */

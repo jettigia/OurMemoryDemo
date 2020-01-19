@@ -26,32 +26,38 @@
                        <li class="px-3 py-2">
                            <form class="form" role="form">
                                 <div class="form-group">
-                                    <input v-model="model.username" id="usernameInput" placeholder="Username" class="form-control form-control-sm" type="text" required="">
+                                    <input id="emailInput" placeholder="Email" class="form-control form-control-sm" type="text" required="">
                                 </div>
                                 <div class="form-group">
-                                    <input v-model="model.password" id="passwordInput" placeholder="Password" class="form-control form-control-sm" type="text" required="">
+                                    <input id="passwordInput" placeholder="Password" class="form-control form-control-sm" type="password" required="">
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" v-on:click="login" class="btn btn-primary btn-block">Login</button>
+                                    <button type="submit" class="btn btn-warning btn-block">Login</button>
                                 </div>
-								<div class="form-group text-center">
-                                    <small><router-link to="/registration"> Register</router-link></small>
-                                </div>
+                                
                                 <div class="form-group text-center">
                                     <small><a href="#" data-toggle="modal" data-target="#modalPassword">Forgot password?</a></small>
                                 </div>
+                                
                             </form>
                         </li>
                     </ul>
                 </li>
+                
+        </ul>
+        <ul class="nav navbar-nav flex-row justify-content-between outside-register" style="position: absolute; top: 22px; right: 10%; "> 
+            <div class="form-group text-center">
+                <li ><router-link style="color:white;" to="/registration"> Register</router-link></li>
+            </div>
         </ul>
 
         <div class="collapse navbar-collapse" id="exCollapsingNavbar" >
             <ul class="nav navbar-nav" >
                 <li class="nav-item"><router-link to="/about" class="nav-link" style="color:white;">About</router-link></li>
                 <li class="nav-item"><router-link to="/Dashboard" class="nav-link" style="color:white;">My Dashboard</router-link></li>
-                <li class="nav-item"><router-link to="/RegistrationSuccess" class="nav-link" style="color:white;">Reg-Success [REMOVE]</router-link></li>
-                <li class="nav-item"><router-link to="/RegistrationUnSuccess" class="nav-link" style="color:white;">Reg-UnSuccess [REMOVE]</router-link></li>
+                <li class="nav-item inside-register"><router-link class="nav-link" style="color:white;" to="/registration"> Register</router-link></li>
+                <!-- <li class="nav-item"><router-link to="/RegistrationSuccess" class="nav-link" style="color:white;">Reg-Success [REMOVE]</router-link></li>
+                <li class="nav-item"><router-link to="/RegistrationUnSuccess" class="nav-link" style="color:white;">Reg-UnSuccess [REMOVE]</router-link></li> -->
                 <!-- <li class="nav-item"><a href="#" class="nav-link">Link</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Service</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">More</a></li> -->
@@ -106,7 +112,7 @@
     <router-view />
 
 <!-- Footer section   -->
-	<footer class="footer-section">
+	<footer class="footer-section" >
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-6 order-1 order-md-2">
@@ -130,38 +136,23 @@
   </div>
 </template>
 
-<script>
-import UserService from "@/components/user-service";
 
-    export default {
-        data() {
-    return {
-      model: {
-        username: '',
-        password: '',
-      },
-      show: true
-    };
-  },
-  methods: {
-    async login(evt) {
-      evt.preventDefault();
+<style scoped>
 
-       var service = new UserService();
-       var result = await service.authenticate({
-        "username": this.model.username,
-        "password": this.model.password
-      });
-
-    if (result.status == 200) {
-        this.$router.push('dashboard');
-      } else {
-        // TODO: Display error message.
-      }
-    },
-    async logout(evt) {
-        this.$router.push('home');
-    }
-  }
+.outside-register {
+    display: inline;
 }
-</script>
+.inside-register {
+    display: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .outside-register {
+        display: none;
+    }
+    .inside-register {
+        display: inline;
+    }
+}
+
+</style>
