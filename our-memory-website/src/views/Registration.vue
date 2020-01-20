@@ -115,12 +115,12 @@
         </b-form-group>
 
         <b-form-group
-          id="confirmpasswordLabel"
+          id="confirmPasswordLabel"
           label="Confirm password:"
-          label-for="input-3"
+          label-for="ConfirmPasswordInput"
           style="display:inline;float:right;width:48%;"
           ><b-form-input
-            id="confirmpasswordInput"
+            id="confirmPasswordInput"
             v-model="model.confirmPassword"
             required
             placeholder="Confirm password"
@@ -193,15 +193,16 @@ home-html {
 </style>
 
 <script>
-import axios from "axios";
-import ApiService from "@/components/ApiService";
+import UserService from "@/components/user-service";
 
 export default {
   data() {
     return {
       model: {
         email: "",
-        name: "",
+        firstName: "",
+        lastName: "",
+        username: "",
         confirmPassword: "",
         password: ""
       },
@@ -212,20 +213,21 @@ export default {
     async onSubmit(evt) {
       evt.preventDefault();
 
-      var result = await ApiService.post("\\Account\\Register", {
-        "model.email": this.model.email,
-        "model.name": this.model.name,
-        "model.confirmPassword": this.model.confirmPassword,
-        "model.password": this.model.password
+      var userService = new UserService();
+      var result = await userService.register({
+        "email": this.model.email,
+        "firstName": this.model.firstName,
+        "lastName": this.model.lastName,
+        "username": this.model.username,
+        "confirmPassword": this.model.confirmPassword,
+        "password": this.model.password
       });
 
       if (result.status == 200) {
-        console.log("success: " + result.data);
+        this.$router.push("registrationSuccess");
       } else {
-        console.log("failure:" + result.status + " | " + result.data);
-      }
-
-      alert(JSON.stringify(this.model));
+        this.$router.push("registrationUnsuccess");
+      }      
     },
     onReset(evt) {
       evt.preventDefault();

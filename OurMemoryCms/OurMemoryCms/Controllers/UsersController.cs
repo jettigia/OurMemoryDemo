@@ -56,6 +56,7 @@ namespace OurMemoryCms.Controllers
             return Ok(user);
         }
 
+        [EnableCors(Startup.VUE_CORS_POLICY)]
         [AllowAnonymous]
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody]RegisterInputModel model)

@@ -2,8 +2,8 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
 import Register from "./views/Registration.vue";
-import RegisterSuccess from "./views/RegistrationSuccess.vue";
-import RegisterUnSuccess from "./views/RegistrationUnSuccess.vue";
+import RegisterSuccess from "@/views/RegistrationSuccess.vue";
+import RegisterUnSuccess from "@/views/RegistrationUnSuccess.vue";
 import Dashboard from "./views/Dashboard.vue";
 import NewTextMemory from "./views/NewTextMemory.vue";
 import NewPhotoMemory from "./views/NewPhotoMemory.vue";
@@ -15,6 +15,7 @@ Vue.use(Router);
 export default new Router({
   mode: "history",
   base: process.env.BASE_URL,
+  // TODO: All routes here and in the application should use a constant.
   routes: [
     {
       path: "/",
@@ -42,7 +43,7 @@ export default new Router({
     },
     {
       path: "/registrationUnSuccess",
-      name: "registrationUnSuccess",
+      name: "registrationUnsuccess",
       component: RegisterUnSuccess
     },
     {
