@@ -31,6 +31,7 @@ namespace OurMemoryDb
                 .HasOne(memoryEntity => memoryEntity.User)
                 .WithMany(userEntity => userEntity.Memories)
                 .HasForeignKey(memoryEntity => memoryEntity.UserId);
+
             modelBuilder.Entity<CommentEntity>()
                 .HasKey(entity => entity.Id);
 

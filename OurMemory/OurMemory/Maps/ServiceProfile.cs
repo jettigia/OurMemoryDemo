@@ -8,6 +8,10 @@ namespace OurMemoryService.Maps
     {
         public ServiceProfile()
         {
+            CreateMap<TextMemoryInputModel, TextMemoryEntity>();
+
+            CreateMap<TextMemoryEntity, TextMemoryViewModel>();
+
             CreateMap<CommentViewModel, CommentEntity>()
                 .ReverseMap();
         }

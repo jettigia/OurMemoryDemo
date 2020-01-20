@@ -194,7 +194,7 @@ home-html {
 
 <script>
 import axios from "axios";
-import ApiService from "..\\components\\ApiService.vue";
+import ApiService from "@/components/ApiService";
 
 export default {
   data() {

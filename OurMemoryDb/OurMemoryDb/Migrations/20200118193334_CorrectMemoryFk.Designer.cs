@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OurMemoryDb;
 
 namespace OurMemoryDb.Migrations
 {
     [DbContext(typeof(OurMemoryContext))]
-    partial class OurMemoryContextModelSnapshot : ModelSnapshot
+    [Migration("20200118193334_CorrectMemoryFk")]
+    partial class CorrectMemoryFk
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

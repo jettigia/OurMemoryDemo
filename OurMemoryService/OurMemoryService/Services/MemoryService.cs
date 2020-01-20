@@ -12,18 +12,21 @@ namespace OurMemoryService.Services
     public class MemoryService : IMemoryService
     {
         private readonly IMemoryRepository _postRepository;
+        private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
 
-        public MemoryService(IMemoryRepository postRepository, IMapper mapper)
+        public MemoryService(IMemoryRepository postRepository, IUserRepository userRepository, IMapper mapper)
         {
             _postRepository = postRepository;
+            _userRepository = userRepository;
             _mapper = mapper;
         }
 
-        public async Task<TextMemoryViewModel> CreateTextMemoryAsync(string userId, TextMemoryInputModel post)
+        public async Task<TextMemoryViewModel> CreateTextMemoryAsync(string userName, TextMemoryInputModel post)
         {
             var postEntity = _mapper.Map<TextMemoryEntity>(post);
-            postEntity.UserId = userId;
+            var user = await _userRepository.ReadEntityAsync(userName);
+            postEntity.User = user;
             var newEntity = await _postRepository.CreateEntityAsync(postEntity);
             var newViewModel = _mapper.Map<TextMemoryViewModel>(newEntity);
             return newViewModel;
