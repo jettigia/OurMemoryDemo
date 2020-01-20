@@ -48,7 +48,7 @@ namespace OurMemoryService.Services
             return userViewModel;
         }
 
-        public async Task<UserViewModel> Create(UserViewModel user, string password)
+        public async Task<UserViewModel> Create(RegisterViewModel user, string password)
         {
             // validation
             if (string.IsNullOrWhiteSpace(password))
@@ -67,12 +67,10 @@ namespace OurMemoryService.Services
 
             var dbUserEntity = await _userRepository.CreateEntityAsync(newUserEntity);
             var userViewModel = _mapper.Map<UserViewModel>(dbUserEntity);
-            userViewModel.Password = string.Empty;
-            userViewModel.Id = Guid.Empty;
             return userViewModel;
         }
 
-        public async Task<UserViewModel> Update(UserViewModel userParam, string password = null)
+        public async Task<UserViewModel> Update(UpdateViewModel userParam, string password = null)
         {
             var user = await _userRepository.ReadEntityAsync(userParam.Username);
 

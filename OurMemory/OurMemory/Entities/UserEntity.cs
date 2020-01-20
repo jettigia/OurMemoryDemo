@@ -1,6 +1,6 @@
 using OurMemory.Configuration;
 using System;
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations;
 
 namespace OurMemory.Entities
@@ -9,7 +9,7 @@ namespace OurMemory.Entities
     {
         public Guid Id { get; set; }
 
-        [Required, StringLength(125)]
+        [Required, EmailAddress, StringLength(125, ErrorMessage = ValidationConstants.EMAIL_LENGTH_ERROR_MESSAGE)]
         public string Email { get; set; }
 
         [Required, StringLength(24)]

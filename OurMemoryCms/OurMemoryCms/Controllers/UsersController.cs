@@ -22,15 +22,12 @@ namespace OurMemoryCms.Controllers
     public class UsersController : ControllerBase
     {
         private IUserService _userService;
-        private IMapper _mapper;
         private const string USER_ID_CLAIM = "UserIdClaim";
 
         public UsersController(
-            IUserService userService,
-            IMapper mapper)
+            IUserService userService)
         {
             _userService = userService;
-            _mapper = mapper;
         }
 
         [AllowAnonymous]
@@ -53,7 +50,8 @@ namespace OurMemoryCms.Controllers
             await HttpContext.SignInAsync(principal);
 
             // return basic user info and authentication token
-            return Ok(user);
+            return Ok(new {
+                user.Username                
         }
 
         [EnableCors(Startup.VUE_CORS_POLICY)]
@@ -63,11 +61,8 @@ namespace OurMemoryCms.Controllers
         {
             try
             {
-                // map model to entity
-                var user = _mapper.Map<UserViewModel>(model);
-
                 //create user
-                var newUser = await _userService.Create(user, model.Password);
+                var newUser = await _userService.Create(model, model.Password);
                 return Ok(newUser);
             }
             catch (AppException ex)
@@ -81,14 +76,10 @@ namespace OurMemoryCms.Controllers
         [HttpPut("{id}")]
         public IActionResult Update(Guid id, [FromBody]UpdateViewModel model)
         {
-            // map model to entity and set id
-            var user = _mapper.Map<UserViewModel>(model);
-            user.Id = id;
-
             try
             {
                 // update user 
-                _userService.Update(user, model.Password);
+                _userService.Update(model, model.Password);
                 return Ok();
             }
             catch (AppException ex)

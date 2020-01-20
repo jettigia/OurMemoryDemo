@@ -4,10 +4,10 @@ namespace OurMemory.Models
 {
     public class AuthenticateInputModel
     {
-        [Required]
+        [Required, StringLength(255, MinimumLength = 8)]
         public string Username { get; set; }
 
-        [Required]
+        [Required, StringLength(255)]
         public string Password { get; set; }
     }
 }
