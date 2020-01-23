@@ -50,8 +50,10 @@ namespace OurMemoryCms.Controllers
             await HttpContext.SignInAsync(principal);
 
             // return basic user info and authentication token
-            return Ok(new {
-                user.Username                
+            return Ok(new
+            {
+                user.Username
+            });
         }
 
         [EnableCors(Startup.VUE_CORS_POLICY)]
@@ -61,7 +63,7 @@ namespace OurMemoryCms.Controllers
         {
             try
             {
-                //create user
+                // Create user
                 var newUser = await _userService.Create(model, model.Password);
                 return Ok(newUser);
             }

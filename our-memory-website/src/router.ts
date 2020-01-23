@@ -47,8 +47,8 @@ export default new Router({
       component: RegisterUnSuccess
     },
     {
-      path: "/Dashboard",
-      name: "Dashboard",
+      path: "/dashboard",
+      name: "dashboard",
       component: Dashboard
     },
     {
@@ -57,23 +57,23 @@ export default new Router({
       component: Home
     },
     {
-      path: "/NewTextMemory",
-      name: "NewTextMemory",
+      path: "/newTextMemory",
+      name: "newTextMemory",
       component: NewTextMemory
     },
     {
-      path: "/NewPhotoMemory",
-      name: "NewPhotoMemory",
+      path: "/newPhotoMemory",
+      name: "newPhotoMemory",
       component: NewPhotoMemory
     },
     {
-      path: "/NewVideoMemory",
-      name: "NewVideoMemory",
+      path: "/newVideoMemory",
+      name: "newVideoMemory",
       component: NewVideoMemory
     },
     {
-      path: "/MemoryCreateSuccess",
-      name: "MemoryCreateSuccess",
+      path: "/memoryCreateSuccess",
+      name: "memoryCreateSuccess",
       component: MemoryCreateSuccess
     }
   ]

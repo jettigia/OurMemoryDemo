@@ -48,7 +48,7 @@ namespace OurMemoryService.Services
             return userViewModel;
         }
 
-        public async Task<UserViewModel> Create(RegisterViewModel user, string password)
+        public async Task<UserViewModel> Create(RegisterInputModel user, string password)
         {
             // validation
             if (string.IsNullOrWhiteSpace(password))
@@ -58,8 +58,7 @@ namespace OurMemoryService.Services
             if (checkUsernameUser != null)
                 throw new AppException("Username \"" + user.Username + "\" is already taken");
 
-            byte[] passwordHash, passwordSalt;
-            CreatePasswordHash(password, out passwordHash, out passwordSalt);
+            CreatePasswordHash(password, out byte[] passwordHash, out byte[] passwordSalt);
 
             var newUserEntity = _mapper.Map<UserEntity>(user);
             newUserEntity.PasswordHash = passwordHash;

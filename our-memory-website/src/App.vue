@@ -12,6 +12,7 @@
 		<nav id="theTopHeader" class="navbar navbar-expand-lg navbar-light fixed-top color" role="navigation" style="background-color:#5F3076;">
     <div class="container" style=" padding: 0; border: 0; margin: 0; width:100%;" >
 
+<!-- Route home -->
         <a class="navbar-brand" href="index.html"><img src="./assets/logo3-trans.png" alt="logo"></a>
 
         <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
@@ -26,13 +27,14 @@
                        <li class="px-3 py-2">
                            <form class="form" role="form">
                                 <div class="form-group">
-                                    <input id="emailInput" placeholder="Email" class="form-control form-control-sm" type="text" required="">
+                                    <input id="emailInput" v-model="model.username" placeholder="Email" class="form-control form-control-sm" type="text" required="">
                                 </div>
                                 <div class="form-group">
-                                    <input id="passwordInput" placeholder="Password" class="form-control form-control-sm" type="password" required="">
+                                    <input id="passwordInput" v-model="model.password" placeholder="Password" class="form-control form-control-sm" type="password" required="">
                                 </div>
+                                <div :v-show="error">{{ errorMessage }}</div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-warning btn-block">Login</button>
+                                    <button v-on:click="onSubmit"  type="submit" class="btn btn-warning btn-block">Login</button>
                                 </div>
                                 
                                 <div class="form-group text-center">
@@ -156,3 +158,47 @@
 }
 
 </style>
+
+<script>
+import UserService from "@/components/user-service";
+
+export default {
+  data() {
+    return {
+      error: false,
+      errorMessage: "",
+      model: {
+        username: "",
+        password: ""
+      }
+    };
+  },
+  methods: {
+    async onSubmit(evt) {
+        debugger;
+
+    evt.preventDefault();
+    this.onReset(evt);
+    let that = this;
+
+      var userService = new UserService();
+      var result = await userService.authenticate({
+        "username": this.model.username,
+        "password": this.model.password
+      }).then(response => {
+        that.$router.push("dashboard");
+      }).catch(error => {
+       that.error = true;
+       that.errorMessage = "Invalid login attempt";
+    });
+
+    },
+    onReset(evt) {
+      evt.preventDefault();
+      // Reset our form values
+      this.error = false;
+      this.errorMessage = "";
+    }
+  }
+};
+</script>

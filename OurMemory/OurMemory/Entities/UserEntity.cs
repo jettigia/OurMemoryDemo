@@ -1,5 +1,6 @@
 using OurMemory.Configuration;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations;
 
@@ -18,7 +19,7 @@ namespace OurMemory.Entities
         [Required, StringLength(24)]
         public string LastName { get; set; }
 
-        [Required, StringLength(24, MinimumLength = 8)]
+        [Required, StringLength(24, MinimumLength = 8, ErrorMessage = ValidationConstants.USERNAME_ERROR_MESSAGE)]
         public string Username { get; set; }
 
         [Required]

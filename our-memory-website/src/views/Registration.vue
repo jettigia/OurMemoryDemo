@@ -88,20 +88,21 @@
 
         </div>
 
-        <b-form-group id="username.Label" label="Username:" label-for="username">
+        <b-form-group id="username.Label" label="Username:" label-for="username" :invalid-feedback="usernameError">
           <b-form-input
             id="username"
             v-model="model.username"
             required
-            placeholder="Enter username"
+            placeholder="Enter username 8 to 16 characters"
           ></b-form-input>
+          <div :v-show="error">{{ model.usernameError }}</div>          
         </b-form-group>
 
         <div style="display:inline;">
 
         <b-form-group
           id="passwordLabel"
-          label="password:"
+          label="Password:"
           label-for="passwordInput"
           style="display:inline;float:left;width:48%;"
         >
@@ -109,9 +110,10 @@
             id="passwordInput"
             v-model="model.password"
             required
-            placeholder="Enter password"
+            placeholder="Enter password with one uppercase, lowercase letter and one digit"
             type="password"
-          ></b-form-input>
+          ></b-form-input>          
+          <div :v-show="error">{{ model.passwordError }}</div>
         </b-form-group>
 
         <b-form-group
@@ -119,6 +121,8 @@
           label="Confirm password:"
           label-for="ConfirmPasswordInput"
           style="display:inline;float:right;width:48%;"
+          :invalid-feedback="passwordError"
+          :state="hasError"
           ><b-form-input
             id="confirmPasswordInput"
             v-model="model.confirmPassword"
@@ -203,15 +207,22 @@ export default {
         firstName: "",
         lastName: "",
         username: "",
+        usernameError: "",
         confirmPassword: "",
-        password: ""
+        password: "",
+        passwordError: ""
       },
-      show: true
+      show: true,
+      error: false,
     };
   },
   methods: {
     async onSubmit(evt) {
-      evt.preventDefault();
+
+evt.preventDefault();
+
+      this.onReset(evt);
+      let that = this;
 
       var userService = new UserService();
       var result = await userService.register({
@@ -221,19 +232,31 @@ export default {
         "username": this.model.username,
         "confirmPassword": this.model.confirmPassword,
         "password": this.model.password
-      });
-
-      if (result.status == 200) {
-        this.$router.push("registrationSuccess");
+      }).then(response => {
+        that.$router.push("registrationSuccess");
+      }).catch(error => {
+       if (error.response.status == 400) {
+         that.error = true;
+        if (error.response.data.errors.Password) {
+          that.model.passwordError = error.response.data.errors.Password.join(" ");
+        }
+        if (error.response.data.errors.Username) {
+          that.model.usernameError = error.response.data.errors.Username.join(" ");
+        }
       } else {
-        this.$router.push("registrationUnsuccess");
+        that.$router.push("registrationUnsuccess");
       }      
+    });
+
     },
     onReset(evt) {
       evt.preventDefault();
       // Reset our form values
       this.model.email = "";
       this.model.name = "";
+      this.model.passwordError = "";
+      this.model.usernameError = "";
+      this.error = false;
       // Trick to reset/clear native browser form validation state
       this.show = false;
       this.$nextTick(() => {
@@ -243,4 +266,3 @@ export default {
   }
 };
 </script>
-
