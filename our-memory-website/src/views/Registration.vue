@@ -165,16 +165,12 @@ home-html {
   height: 90%;
   /* padding-bottom: 0px 0px 19px 0px; */
 }
-#center-home-panel {
-  
+#center-home-panel {  
   position: absolute;
-  margin: auto;
-     
+  margin: auto;     
   right: 0;
-  left: 0;
-  
+  left: 0;  
   top: 10%;
-
   width: 70%;
   padding: 30px;
   background-color: #ffffffef;
@@ -218,10 +214,8 @@ export default {
   },
   methods: {
     async onSubmit(evt) {
-
-evt.preventDefault();
-
-      this.onReset(evt);
+      evt.preventDefault();
+      this.errorReset();
       let that = this;
 
       var userService = new UserService();
@@ -230,11 +224,11 @@ evt.preventDefault();
         "firstName": this.model.firstName,
         "lastName": this.model.lastName,
         "username": this.model.username,
-        "confirmPassword": this.model.confirmPassword,
         "password": this.model.password
       }).then(response => {
         that.$router.push("registrationSuccess");
       }).catch(error => {
+        debugger;
        if (error.response.status == 400) {
          that.error = true;
         if (error.response.data.errors.Password) {
@@ -249,14 +243,17 @@ evt.preventDefault();
     });
 
     },
+    errorReset() {
+      this.model.passwordError = "";
+      this.model.usernameError = "";
+      this.error = false;
+    },
     onReset(evt) {
       evt.preventDefault();
       // Reset our form values
       this.model.email = "";
       this.model.name = "";
-      this.model.passwordError = "";
-      this.model.usernameError = "";
-      this.error = false;
+      this.errorReset();
       // Trick to reset/clear native browser form validation state
       this.show = false;
       this.$nextTick(() => {

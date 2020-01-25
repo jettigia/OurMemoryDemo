@@ -27,7 +27,7 @@
                        <li class="px-3 py-2">
                            <form class="form" role="form">
                                 <div class="form-group">
-                                    <input id="emailInput" v-model="model.username" placeholder="Email" class="form-control form-control-sm" type="text" required="">
+                                    <input id="emailInput" v-model="model.username" placeholder="Username" class="form-control form-control-sm" type="text" required="">
                                 </div>
                                 <div class="form-group">
                                     <input id="passwordInput" v-model="model.password" placeholder="Password" class="form-control form-control-sm" type="password" required="">
@@ -175,9 +175,7 @@ export default {
   },
   methods: {
     async onSubmit(evt) {
-        debugger;
-
-    evt.preventDefault();
+        evt.preventDefault();
     this.onReset(evt);
     let that = this;
 
@@ -186,6 +184,7 @@ export default {
         "username": this.model.username,
         "password": this.model.password
       }).then(response => {
+        onReset(evt);
         that.$router.push("dashboard");
       }).catch(error => {
        that.error = true;
@@ -196,6 +195,8 @@ export default {
     onReset(evt) {
       evt.preventDefault();
       // Reset our form values
+      this.model.username = "";
+      this.model.password = "";
       this.error = false;
       this.errorMessage = "";
     }

@@ -1,7 +1,7 @@
 const axios = require('axios');
 // Todo make configurable
-const apiUrl = 'https://localhost:44399/api/';
-// const apiUrl = 'http://finitech-001-site1.gtempurl.com/api/';
+// const apiUrl = 'https://localhost:44399/api/';
+const apiUrl = 'http://finitech-001-site1.gtempurl.com/api/';
 const usersEndpoint = 'users/';
 const registerPath = `${usersEndpoint}register`;
 const authenticatePath = `${usersEndpoint}authenticate`;
