@@ -365,7 +365,6 @@ export default {
           that.$router.push("registrationSuccess");
         })
         .catch(error => {
-          debugger;
           if (error.response.status == 400) {
             that.error = true;
             if (error.response.data.errors.Password) {

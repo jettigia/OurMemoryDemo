@@ -8,6 +8,7 @@
             <h2 class="wow fadeInUp" data-wow-delay="1.6s">
               Our Memory is currently in development:
             </h2>
+            <base href="/" />
             <h4></h4>
             <br />
             <router-link
