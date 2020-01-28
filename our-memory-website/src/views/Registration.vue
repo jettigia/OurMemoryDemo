@@ -80,6 +80,7 @@
 </template>
 
 <script>
+import { mapActions, mapState } from "vuex";
 import UserService from "@/components/user-service";
 
 export default {
@@ -103,11 +104,24 @@ export default {
     console.log(result.data);
   },
   methods: {
+    ...mapActions({
+      register: "user/register"
+    }),
     async onSubmit(evt) {
       evt.preventDefault();
 
-  if (this.model.password != this.model.confirmPassword) {
-    return;
+
+      await this.register({
+        email: this.model.email,
+        firstName: this.model.firstName,
+        lastName: this.model.lastName,
+        username: this.model.username,
+        password: this.model.password
+      });
+
+      debugger;
+      console.log(this.user.registerStatus);
+
   }
 
       var service = new UserService();
@@ -140,6 +154,11 @@ export default {
         this.show = true;
       });
     }
+  },
+  computed: {
+    ...mapState({
+      user: state => state.user.user
+    })
   }
 };
 </script>

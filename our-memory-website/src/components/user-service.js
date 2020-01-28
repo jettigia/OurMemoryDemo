@@ -1,6 +1,6 @@
 const axios = require('axios');
-const apiUrl = 'http://finitech-001-site1.gtempurl.com/api/';
-const usersEndpoint = 'users/';
+// const apiUrl = 'https://localhost:44399/api/';
+const apiUrl = "http://finitech-001-site1.gtempurl.com/api/";
 const registerPath = `${usersEndpoint}register`;
 const authenticatePath = `${usersEndpoint}authenticate`;
 const versionPath = `${usersEndpoint}version`;
