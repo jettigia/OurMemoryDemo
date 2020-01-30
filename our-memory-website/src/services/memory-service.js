@@ -1,5 +1,5 @@
 const axios = require("axios");
-const memoryEndpoint = "memory/";
+const textMemoryEndpoint = "textmemory/";
 
 class MemoryService {
   constructor() {
@@ -9,8 +9,8 @@ class MemoryService {
    * Register a user.
    * @param {A entity Object} entity
    */
-  async createMemory(entity) {
-    const apiCall = await axios.post(memoryEndpoint, entity, {
+  async createTextMemory(entity) {
+    const apiCall = await axios.post(textMemoryEndpoint, entity, {
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET, POST"

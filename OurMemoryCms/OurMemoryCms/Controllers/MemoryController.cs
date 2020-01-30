@@ -11,12 +11,12 @@ namespace OurMemoryCms.Controllers
 {
     [Produces("application/json")]
     [Route("api/ImageMemory")]
-    public class ImageMemoryController : Controller
+    public class MemoryController : Controller
     {
         private readonly IWebHostEnvironment _environment;
         private readonly MemoryService _memoryService;
 
-        public ImageMemoryController(IWebHostEnvironment environment, MemoryService memoryService)
+        public MemoryController(IWebHostEnvironment environment, MemoryService memoryService)
         {
             _environment = environment ?? throw new ArgumentNullException(nameof(environment));
             _memoryService = memoryService;

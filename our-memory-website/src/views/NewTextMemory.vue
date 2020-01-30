@@ -23,6 +23,7 @@
           <br />
           <input
             type="submit"
+            v-model="model.memory"
             class="btn btn-warning btn-lg"
             value="Save & Exit"
             style="width:90%"
@@ -38,6 +39,56 @@
     </div>
   </div>
 </template>
+
+<script>
+import { mapState, mapActions } from "vuex";
+
+export default {
+  data() {
+    return {
+      model: {
+        memory: "",
+        memoryError: ""
+      },
+      show: true
+    };
+  },
+  methods: {
+    ...mapActions({
+      register: "memory/createTextMemory"
+    }),
+    async onSubmit(evt) {
+      evt.preventDefault();
+
+      await this.createTextMemory({
+        textContent: this.model.memory
+      });
+
+      if (this.memorySuccess) {
+        // TODO close this window and refresh current window
+      } else {
+        this.memoryError = this.memoryStatus;
+      }
+    },
+    onReset(evt) {
+      evt.preventDefault();
+      // Reset our form values
+      this.model.memory = "";
+      // Trick to reset/clear native browser form validation state
+      this.show = false;
+      this.$nextTick(() => {
+        this.show = true;
+      });
+    }
+  },
+  computed: {
+    ...mapState({
+      memoryStatus: state => state.memoryUploadStatus,
+      memorySuccess: state => state.memorySuccess
+    })
+  }
+};
+</script>
 
 <style scoped>
 #editor {
