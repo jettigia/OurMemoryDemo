@@ -5,6 +5,8 @@ namespace OurMemory.Models
     public class TextMemoryInputModel
     {
         [Required]
-        public string Content { get; set; }
+        public string TextContent { get; set; }
+
+        public string UserId { get; set; }
     }
 }

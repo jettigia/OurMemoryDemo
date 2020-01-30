@@ -8,7 +8,7 @@ namespace OurMemoryDb
         public OurMemoryContext(DbContextOptions<OurMemoryContext> options) : base(options) { }
 
         public DbSet<CommentEntity> CommentEntities { get; set; }
-        public DbSet<TextMemoryEntity> PostEntities { get; set; }
+        public DbSet<MemoryEntity> Memories { get; set; }
         public DbSet<UserEntity> UserEntity { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -24,10 +24,10 @@ namespace OurMemoryDb
                 .HasIndex(entity => entity.Username)
                 .IsUnique();
 
-            modelBuilder.Entity<TextMemoryEntity>()
+            modelBuilder.Entity<MemoryEntity>()
                 .HasKey(entity => entity.Id);
 
-            modelBuilder.Entity<TextMemoryEntity>()
+            modelBuilder.Entity<MemoryEntity>()
                 .HasOne(memoryEntity => memoryEntity.User)
                 .WithMany(userEntity => userEntity.Memories)
                 .HasForeignKey(memoryEntity => memoryEntity.UserId);

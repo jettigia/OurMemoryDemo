@@ -226,7 +226,7 @@
 </style>
 
 <script>
-import UserService from "@/components/user-service";
+import UserService from "@/services/user-service";
 
 export default {
   data() {

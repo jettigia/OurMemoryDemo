@@ -28,6 +28,6 @@ namespace OurMemory.Entities
         [Required]
         public byte[] PasswordSalt { get; set; }
 
-        public virtual List<TextMemoryEntity> Memories { get; set; }
+        public virtual List<MemoryEntity> Memories { get; set; }
     }
 }

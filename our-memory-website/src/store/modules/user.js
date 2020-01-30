@@ -1,14 +1,7 @@
-import UserService from "../../components/user-service.js";
+import UserService from "../../services/user-service.js";
 
 const state = {
   user: null
-};
-
-// getters
-const getters = {
-  user: state => {
-    return state.user;
-  }
 };
 
 // actions
@@ -65,7 +58,6 @@ const mutations = {
 export default {
   namespaced: true,
   state,
-  getters,
   actions,
   mutations
 };

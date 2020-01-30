@@ -22,13 +22,24 @@ namespace OurMemoryService.Services
             _mapper = mapper;
         }
 
-        public async Task<TextMemoryViewModel> CreateTextMemoryAsync(string userName, TextMemoryInputModel post)
+        public async Task<TextMemoryViewModel> CreateTextMemoryAsync(string username, TextMemoryInputModel post)
         {
-            var postEntity = _mapper.Map<TextMemoryEntity>(post);
-            var user = await _userRepository.ReadEntityAsync(userName);
+            var postEntity = _mapper.Map<MemoryEntity>(post);
+            return await CreateMemoryAsync(username, postEntity);
+        }
+
+        public async Task<TextMemoryViewModel> CreateImageMemoryAsync(string username, ImageMemoryInputModel post)
+        {
+            var postEntity = _mapper.Map<MemoryEntity>(post);
+            return await CreateMemoryAsync(username, postEntity);
+        }
+
+        private async Task<TextMemoryViewModel> CreateMemoryAsync(string username, MemoryEntity postEntity)
+        {
+            var user = await _userRepository.ReadEntityAsync(username);
             postEntity.User = user;
             var newEntity = await _postRepository.CreateEntityAsync(postEntity);
-            var newViewModel = _mapper.Map<TextMemoryViewModel>(newEntity);
+            var newViewModel = _mapper.Map<ImageMemoryViewModel>(newEntity);
             return newViewModel;
         }
 
@@ -46,7 +57,7 @@ namespace OurMemoryService.Services
 
         public async Task<TextMemoryViewModel> UpdateAsync(TextMemoryViewModel post)
         {
-            var newEntity = _mapper.Map<TextMemoryEntity>(post);
+            var newEntity = _mapper.Map<MemoryEntity>(post);
             var updatedEntity = await _postRepository.UpdateEntityAsync(newEntity);
             var updatedModel = _mapper.Map<TextMemoryViewModel>(updatedEntity);
             return updatedModel;
@@ -54,7 +65,7 @@ namespace OurMemoryService.Services
 
         public async Task<bool> DeleteAsync(TextMemoryViewModel post)
         {
-            var entityToDelete = _mapper.Map<TextMemoryEntity>(post);
+            var entityToDelete = _mapper.Map<MemoryEntity>(post);
             var isSuccessful = await _postRepository.DeleteEntityAsync(entityToDelete);
             return isSuccessful;
         }

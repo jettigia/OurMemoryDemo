@@ -1,7 +1,11 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OurMemory.Models;
+using OurMemoryService.Services;
 using System;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace OurMemoryCms.Controllers
 {
@@ -10,17 +14,33 @@ namespace OurMemoryCms.Controllers
     public class ImageMemoryController : Controller
     {
         private readonly IWebHostEnvironment _environment;
-        public ImageMemoryController(IWebHostEnvironment environment)
+        private readonly MemoryService _memoryService;
+
+        public ImageMemoryController(IWebHostEnvironment environment, MemoryService memoryService)
         {
             _environment = environment ?? throw new ArgumentNullException(nameof(environment));
+            _memoryService = memoryService;
         }
 
-        // TODO Make this async
-        // POST: api/Image
-        [HttpPost]
-        public IActionResult Post(IFormFile file)
+        [HttpPost("UploadFile")]
+        public async Task<string> UploadFile([FromForm] IFormFile file)
         {
-            return NotFound();
+            string fName = file.FileName;
+            string path = Path.Combine(_environment.ContentRootPath, "Images/" + file.FileName);
+
+            var upload = new ImageMemoryInputModel()
+            {
+                UserId = HttpContext.User.Identity.Name,
+            };
+
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await stream.ReadAsync(upload.FileContent);
+            }
+
+            var userId = HttpContext.User.Identity.Name;
+            var memoryViewModel = await _memoryService.CreateImageMemoryAsync(userId, upload);
+            return file.FileName;
         }
     }
 }
