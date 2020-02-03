@@ -2,11 +2,11 @@
 
 namespace OurMemory.Entities
 {
-    public class CommentEntity
+    public class Comment
     {
         public Guid Id { get; set; }
-        public string Comment { get; set; }
+        public string Content { get; set; }
         public Guid PostId { get; set; }
-        public virtual MemoryEntity Post { get; set; }
+        public virtual Memory Post { get; set; }
     }
 }

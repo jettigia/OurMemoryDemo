@@ -9,8 +9,8 @@ using OurMemoryDb;
 namespace OurMemoryDb.Migrations
 {
     [DbContext(typeof(OurMemoryContext))]
-    [Migration("20200118014126_InitialDbCreation")]
-    partial class InitialDbCreation
+    [Migration("20200203081223_InitialDatabaseCreation")]
+    partial class InitialDatabaseCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,13 +19,13 @@ namespace OurMemoryDb.Migrations
                 .HasAnnotation("ProductVersion", "3.1.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("OurMemory.Entities.CommentEntity", b =>
+            modelBuilder.Entity("OurMemory.Entities.Comment", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<string>("Comment")
+                    b.Property<string>("Content")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<Guid>("PostId")
@@ -35,24 +35,35 @@ namespace OurMemoryDb.Migrations
 
                     b.HasIndex("PostId");
 
-                    b.ToTable("CommentEntities");
+                    b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("OurMemory.Entities.PostEntity", b =>
+            modelBuilder.Entity("OurMemory.Entities.Memory", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<string>("Content")
+                    b.Property<byte[]>("Content")
+                        .HasColumnType("longblob");
+
+                    b.Property<string>("ContentType")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("char(36)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("PostEntities");
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Memories");
                 });
 
-            modelBuilder.Entity("OurMemory.Entities.UserEntity", b =>
+            modelBuilder.Entity("OurMemory.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -60,18 +71,18 @@ namespace OurMemoryDb.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("varchar(8) CHARACTER SET utf8mb4")
-                        .HasMaxLength(8);
+                        .HasColumnType("varchar(125) CHARACTER SET utf8mb4")
+                        .HasMaxLength(125);
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
-                        .HasMaxLength(50);
+                        .HasColumnType("varchar(24) CHARACTER SET utf8mb4")
+                        .HasMaxLength(24);
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
-                        .HasMaxLength(50);
+                        .HasColumnType("varchar(24) CHARACTER SET utf8mb4")
+                        .HasMaxLength(24);
 
                     b.Property<byte[]>("PasswordHash")
                         .IsRequired()
@@ -83,8 +94,8 @@ namespace OurMemoryDb.Migrations
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasColumnType("varchar(10) CHARACTER SET utf8mb4")
-                        .HasMaxLength(10);
+                        .HasColumnType("varchar(24) CHARACTER SET utf8mb4")
+                        .HasMaxLength(24);
 
                     b.HasKey("Id");
 
@@ -94,14 +105,23 @@ namespace OurMemoryDb.Migrations
                     b.HasIndex("Username")
                         .IsUnique();
 
-                    b.ToTable("UserEntity");
+                    b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("OurMemory.Entities.CommentEntity", b =>
+            modelBuilder.Entity("OurMemory.Entities.Comment", b =>
                 {
-                    b.HasOne("OurMemory.Entities.PostEntity", "Post")
+                    b.HasOne("OurMemory.Entities.Memory", "Post")
                         .WithMany("Comments")
                         .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("OurMemory.Entities.Memory", b =>
+                {
+                    b.HasOne("OurMemory.Entities.User", "User")
+                        .WithMany("Memories")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

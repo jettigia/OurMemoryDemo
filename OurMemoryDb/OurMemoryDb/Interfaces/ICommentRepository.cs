@@ -2,7 +2,7 @@
 
 namespace OurMemoryDb
 {
-    public interface ICommentRepository : IRepository<CommentEntity>
+    public interface ICommentRepository : IRepository<Comment>
     {
     }
 }

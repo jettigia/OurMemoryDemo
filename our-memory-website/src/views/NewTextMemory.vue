@@ -3,7 +3,7 @@
     <!-- Create the editor container -->
     <div id="editor">
       <div id="editorPageBG">
-        <form action="/action_page.php" id="memTxtFrm">
+        <b-form @submit="onSubmit" @reset="onReset">
           <input
             type="text"
             name="memoryTitle"
@@ -13,6 +13,7 @@
           <br />
           <br />
           <textarea
+            v-model="model.memory"
             style="width:100%;height:100%;border:none;"
             rows="26"
             wrap="hard"
@@ -23,18 +24,16 @@
           <br />
           <input
             type="submit"
-            v-model="model.memory"
             class="btn btn-warning btn-lg"
             value="Save & Exit"
             style="width:90%"
           />
           <input
-            type="submit"
             class="btn btn-secondary btn-lg"
             value="Exit"
             style="width:10%"
           />
-        </form>
+        </b-form>
       </div>
     </div>
   </div>
@@ -55,11 +54,10 @@ export default {
   },
   methods: {
     ...mapActions({
-      register: "memory/createTextMemory"
+      createTextMemory: "memory/createTextMemory"
     }),
     async onSubmit(evt) {
       evt.preventDefault();
-
       await this.createTextMemory({
         textContent: this.model.memory
       });

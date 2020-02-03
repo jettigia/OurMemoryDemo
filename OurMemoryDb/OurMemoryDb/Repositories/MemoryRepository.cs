@@ -15,20 +15,20 @@ namespace OurMemoryDb
             _context = context;
         }
 
-        public async Task<MemoryEntity> CreateEntityAsync(MemoryEntity entity)
+        public async Task<Memory> CreateEntityAsync(Memory entity)
         {
             await _context.Memories.AddAsync(entity);
             await _context.SaveChangesAsync();
             return entity;
         }
 
-        public async Task<MemoryEntity> ReadEntityAsync(Guid postId)
+        public async Task<Memory> ReadEntityAsync(Guid postId)
         {
             var entity = await _context.Memories.FindAsync(postId);
             return entity;
         }
 
-        public async Task<List<MemoryEntity>> ReadAllEntityAsync(Guid userId)
+        public async Task<List<Memory>> ReadAllEntityAsync(Guid userId)
         {
             var connection = _context.Database.GetDbConnection();
             _context.SaveChanges();
@@ -36,7 +36,7 @@ namespace OurMemoryDb
             return entity;
         }
 
-        public async Task<MemoryEntity> UpdateEntityAsync(MemoryEntity entity)
+        public async Task<Memory> UpdateEntityAsync(Memory entity)
         {
             var dbEntity = await ReadEntityAsync(entity.Id);
             dbEntity.Content = entity.Content;
@@ -45,7 +45,7 @@ namespace OurMemoryDb
             return dbEntity;
         }
 
-        public async Task<bool> DeleteEntityAsync(MemoryEntity entity)
+        public async Task<bool> DeleteEntityAsync(Memory entity)
         {
             try
             {

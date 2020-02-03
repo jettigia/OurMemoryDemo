@@ -2,11 +2,10 @@ using OurMemory.Configuration;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations;
 
 namespace OurMemory.Entities
 {
-    public class UserEntity
+    public class User
     {
         public Guid Id { get; set; }
 
@@ -28,6 +27,6 @@ namespace OurMemory.Entities
         [Required]
         public byte[] PasswordSalt { get; set; }
 
-        public virtual List<MemoryEntity> Memories { get; set; }
+        public virtual List<Memory> Memories { get; set; }
     }
 }

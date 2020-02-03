@@ -27,6 +27,7 @@ namespace OurMemoryCms.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ActionResult> CreateTextModel(TextMemoryInputModel textMemoryViewModel)
         {
             try

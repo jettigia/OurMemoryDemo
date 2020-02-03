@@ -24,17 +24,17 @@ namespace OurMemoryService.Services
 
         public async Task<TextMemoryViewModel> CreateTextMemoryAsync(string username, TextMemoryInputModel post)
         {
-            var postEntity = _mapper.Map<MemoryEntity>(post);
+            var postEntity = _mapper.Map<Memory>(post);
             return await CreateMemoryAsync(username, postEntity);
         }
 
         public async Task<TextMemoryViewModel> CreateImageMemoryAsync(string username, ImageMemoryInputModel post)
         {
-            var postEntity = _mapper.Map<MemoryEntity>(post);
+            var postEntity = _mapper.Map<Memory>(post);
             return await CreateMemoryAsync(username, postEntity);
         }
 
-        private async Task<TextMemoryViewModel> CreateMemoryAsync(string username, MemoryEntity postEntity)
+        private async Task<TextMemoryViewModel> CreateMemoryAsync(string username, Memory postEntity)
         {
             var user = await _userRepository.ReadEntityAsync(username);
             postEntity.User = user;
@@ -57,7 +57,7 @@ namespace OurMemoryService.Services
 
         public async Task<TextMemoryViewModel> UpdateAsync(TextMemoryViewModel post)
         {
-            var newEntity = _mapper.Map<MemoryEntity>(post);
+            var newEntity = _mapper.Map<Memory>(post);
             var updatedEntity = await _postRepository.UpdateEntityAsync(newEntity);
             var updatedModel = _mapper.Map<TextMemoryViewModel>(updatedEntity);
             return updatedModel;
@@ -65,7 +65,7 @@ namespace OurMemoryService.Services
 
         public async Task<bool> DeleteAsync(TextMemoryViewModel post)
         {
-            var entityToDelete = _mapper.Map<MemoryEntity>(post);
+            var entityToDelete = _mapper.Map<Memory>(post);
             var isSuccessful = await _postRepository.DeleteEntityAsync(entityToDelete);
             return isSuccessful;
         }

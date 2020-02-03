@@ -60,7 +60,7 @@ namespace OurMemoryService.Services
 
             CreatePasswordHash(password, out byte[] passwordHash, out byte[] passwordSalt);
 
-            var newUserEntity = _mapper.Map<UserEntity>(user);
+            var newUserEntity = _mapper.Map<User>(user);
             newUserEntity.PasswordHash = passwordHash;
             newUserEntity.PasswordSalt = passwordSalt;
 
@@ -103,7 +103,7 @@ namespace OurMemoryService.Services
                 user.PasswordSalt = passwordSalt;
             }
 
-            var userEntity = _mapper.Map<UserEntity>(user);
+            var userEntity = _mapper.Map<User>(user);
             var updatedUserEntity = _userRepository.UpdateEntityAsync(user);
             var userViewModel = _mapper.Map<UserViewModel>(updatedUserEntity);
 

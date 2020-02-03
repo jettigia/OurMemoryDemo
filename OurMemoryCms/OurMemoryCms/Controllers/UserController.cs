@@ -1,10 +1,7 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using OurMemory.Configuration;
 using OurMemory.Models;
 using OurMemoryService.Interfaces;
 using System;
@@ -19,12 +16,12 @@ namespace OurMemoryCms.Controllers
     [EnableCors(Startup.VUE_CORS_POLICY)]
     [ApiController]
     [Route("api/[controller]")]
-    public class UsersController : ControllerBase
+    public class UserController : ControllerBase
     {
         private IUserService _userService;
         private const string USER_ID_CLAIM = "UserIdClaim";
 
-        public UsersController(
+        public UserController(
             IUserService userService)
         {
             _userService = userService;

@@ -8,15 +8,15 @@ namespace OurMemoryService.Maps
     {
         public ServiceProfile()
         {
-            CreateMap<ImageMemoryInputModel, MemoryEntity>()
+            CreateMap<ImageMemoryInputModel, Memory>()
                 .ForMember(destination => destination.Content, opts => opts.MapFrom(source => source.FileContent));
 
-            CreateMap<TextMemoryInputModel, MemoryEntity>()
+            CreateMap<TextMemoryInputModel, Memory>()
                 .ForMember(destination => destination.Title, opts => opts.MapFrom(source => source.TextContent));           
 
-            CreateMap<MemoryEntity, TextMemoryViewModel>();
+            CreateMap<Memory, TextMemoryViewModel>();
 
-            CreateMap<CommentViewModel, CommentEntity>()
+            CreateMap<CommentViewModel, Comment>()
                 .ReverseMap();
         }
     }

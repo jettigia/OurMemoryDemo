@@ -1,4 +1,4 @@
-import MemoryService from "../../services/memory-service.js.js";
+import MemoryService from "../../services/memory-service.js";
 
 const state = {
   getMemoryError: "",
@@ -12,8 +12,8 @@ const actions = {
   async createTextMemory({ commit }, textMemory) {
     const memoryService = new MemoryService();
 
-    var result = await userService
-      .createTextMemory(memory)
+    var result = await memoryService
+      .createTextMemory(textMemory)
       .then(response => {
         commit("setUploadSuccess");
       })
@@ -24,7 +24,7 @@ const actions = {
   async uploadMemory({ commit, state }, memory) {
     const memoryService = new MemoryService();
 
-    var result = await userService
+    var result = await memoryService
       .uploadMemory(memory)
       .then(response => {
         commit("setUploadSuccess");
@@ -37,7 +37,7 @@ const actions = {
     const memoryService = new MemoryService();
 
     var result = await memoryService
-      .getMemories(user)
+      .getMemories()
       .then(response => {
         commit("setMemories");
       })

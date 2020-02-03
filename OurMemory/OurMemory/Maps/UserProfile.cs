@@ -8,11 +8,11 @@ namespace OurMemoryService.Maps
     {
         public UserProfile()
         {
-            CreateMap<UserEntity, UserViewModel>().ReverseMap();
-            CreateMap<RegisterInputModel, UserEntity>().ReverseMap();
+            CreateMap<User, UserViewModel>().ReverseMap();
+            CreateMap<RegisterInputModel, User>().ReverseMap();
             CreateMap<RegisterInputModel, UserViewModel>().ReverseMap();
-            CreateMap<UserViewModel, UserEntity>().ReverseMap();
-            CreateMap<UpdateViewModel, UserEntity>().ReverseMap();
+            CreateMap<UserViewModel, User>().ReverseMap();
+            CreateMap<UpdateViewModel, User>().ReverseMap();
         }
     }
 }

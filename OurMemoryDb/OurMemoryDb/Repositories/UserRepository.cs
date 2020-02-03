@@ -14,35 +14,35 @@ namespace OurMemoryDb
             _context = context;
         }
 
-        public async Task<UserEntity> CreateEntityAsync(UserEntity entity)
+        public async Task<User> CreateEntityAsync(User entity)
         {
-            var isEmailAddressTaken = await _context.UserEntity.AnyAsync(user => user.Email == entity.Email);
+            var isEmailAddressTaken = await _context.Users.AnyAsync(user => user.Email == entity.Email);
             if (isEmailAddressTaken)
                 throw new ApplicationException("Email address currently being used.");
 
-            _context.UserEntity.Add(entity);
+            _context.Users.Add(entity);
             await _context.SaveChangesAsync();
             return entity;
         }
 
-        public async Task<UserEntity> ReadEntityAsync(Guid userId)
+        public async Task<User> ReadEntityAsync(Guid userId)
         {
-            var entity = await _context.UserEntity.FindAsync(userId);
+            var entity = await _context.Users.FindAsync(userId);
             return entity;
         }
 
-        public async Task<UserEntity> ReadEntityAsync(string username)
+        public async Task<User> ReadEntityAsync(string username)
         {
-            var entity = await _context.UserEntity.SingleOrDefaultAsync(x => x.Username == username);
+            var entity = await _context.Users.SingleOrDefaultAsync(x => x.Username == username);
             return entity;
         }
 
-        public async Task<UserEntity> UpdateEntityAsync(UserEntity entity)
+        public async Task<User> UpdateEntityAsync(User entity)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<bool> DeleteEntityAsync(UserEntity entity)
+        public async Task<bool> DeleteEntityAsync(User entity)
         {
             throw new NotImplementedException();
         }

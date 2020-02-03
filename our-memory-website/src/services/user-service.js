@@ -1,5 +1,5 @@
 const axios = require("axios");
-const usersEndpoint = "users/";
+const usersEndpoint = "user/";
 const registerPath = `${usersEndpoint}register`;
 const authenticatePath = `${usersEndpoint}authenticate`;
 const versionPath = `${usersEndpoint}version`;

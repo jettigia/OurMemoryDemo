@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 
 namespace OurMemoryDb
 {
-    public interface IUserRepository : IRepository<UserEntity>
+    public interface IUserRepository : IRepository<User>
     {
-        Task<UserEntity> ReadEntityAsync(string username);
+        Task<User> ReadEntityAsync(string username);
     }
 }

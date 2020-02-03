@@ -17,13 +17,13 @@ namespace OurMemoryDb.Migrations
                 .HasAnnotation("ProductVersion", "3.1.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("OurMemory.Entities.CommentEntity", b =>
+            modelBuilder.Entity("OurMemory.Entities.Comment", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<string>("Comment")
+                    b.Property<string>("Content")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<Guid>("PostId")
@@ -33,16 +33,22 @@ namespace OurMemoryDb.Migrations
 
                     b.HasIndex("PostId");
 
-                    b.ToTable("CommentEntities");
+                    b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("OurMemory.Entities.TextMemoryEntity", b =>
+            modelBuilder.Entity("OurMemory.Entities.Memory", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<string>("Content")
+                    b.Property<byte[]>("Content")
+                        .HasColumnType("longblob");
+
+                    b.Property<string>("ContentType")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Title")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<Guid>("UserId")
@@ -52,10 +58,10 @@ namespace OurMemoryDb.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("PostEntities");
+                    b.ToTable("Memories");
                 });
 
-            modelBuilder.Entity("OurMemory.Entities.UserEntity", b =>
+            modelBuilder.Entity("OurMemory.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -97,21 +103,21 @@ namespace OurMemoryDb.Migrations
                     b.HasIndex("Username")
                         .IsUnique();
 
-                    b.ToTable("UserEntity");
+                    b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("OurMemory.Entities.CommentEntity", b =>
+            modelBuilder.Entity("OurMemory.Entities.Comment", b =>
                 {
-                    b.HasOne("OurMemory.Entities.TextMemoryEntity", "Post")
+                    b.HasOne("OurMemory.Entities.Memory", "Post")
                         .WithMany("Comments")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("OurMemory.Entities.TextMemoryEntity", b =>
+            modelBuilder.Entity("OurMemory.Entities.Memory", b =>
                 {
-                    b.HasOne("OurMemory.Entities.UserEntity", "User")
+                    b.HasOne("OurMemory.Entities.User", "User")
                         .WithMany("Memories")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
