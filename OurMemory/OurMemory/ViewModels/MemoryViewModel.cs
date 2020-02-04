@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace OurMemory.Models
 {
-    public class TextMemoryViewModel
+    public class MemoryViewModel
     {
         public Guid Id { get; set; }
         public string Content { get; set; }

@@ -327,6 +327,50 @@
   </div>
 </template>
 
+<script>
+import { mapActions, mapState } from "vuex";
+
+export default {
+  data() {
+    return {
+      error: false,
+      errorMessage: "",
+      model: {
+        memories: []
+      }
+    };
+  },
+  methods: {
+    ...mapActions({
+      getMemories: "memory/getMemories",
+      createMemory: "memory/createMemory"
+    }),
+    // Add this to mounted
+    async loadMemories(evt) {
+      // evt.preventDefault();
+      // let that = this;
+      // await this.login({
+      //   username: this.model.username,
+      //   password: this.model.password
+      // });
+      // if (this.user) {
+      //   this.onReset(evt);
+      //   that.$router.push("dashboard");
+      // } else {
+      //   this.onReset(evt);
+      //   that.error = true;
+      //   that.errorMessage = "Invalid login attempt";
+      // }
+    },
+    computed: {
+      ...mapState({
+        memories: state => state.memories
+      })
+    }
+  }
+};
+</script>
+
 <style scoped>
 .grid-container {
   width: 100%;

@@ -12,7 +12,7 @@ const actions = {
     var result = await userService
       .authenticate(user)
       .then(response => {
-        commit("setUser", response.data);
+        commit("setUser", response);
       })
       .catch(error => {
         commit("setLoginError", error.response.data.errors);

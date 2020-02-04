@@ -9,11 +9,11 @@ const state = {
 
 // actions
 const actions = {
-  async createTextMemory({ commit }, textMemory) {
+  async createMemory({ commit }, textMemory) {
     const memoryService = new MemoryService();
 
     var result = await memoryService
-      .createTextMemory(textMemory)
+      .createMemory(textMemory)
       .then(response => {
         commit("setUploadSuccess");
       })
@@ -39,7 +39,7 @@ const actions = {
     var result = await memoryService
       .getMemories()
       .then(response => {
-        commit("setMemories");
+        commit("setMemories", response.data);
       })
       .catch(error => {
         commit("setMemoryFail", error.response.data.errors);

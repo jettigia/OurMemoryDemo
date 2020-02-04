@@ -207,6 +207,59 @@
   </div>
 </template>
 
+<script>
+import { mapActions, mapState } from "vuex";
+
+export default {
+  data() {
+    return {
+      error: false,
+      errorMessage: "",
+      model: {
+        username: "",
+        password: ""
+      }
+    };
+  },
+  methods: {
+    ...mapActions({
+      login: "user/login"
+    }),
+    async onSubmit(evt) {
+      evt.preventDefault();
+      let that = this;
+
+      await this.login({
+        username: this.model.username,
+        password: this.model.password
+      });
+
+      if (this.user) {
+        this.onReset(evt);
+        that.$router.push("dashboard");
+      } else {
+        this.onReset(evt);
+        that.error = true;
+        that.errorMessage = "Invalid login attempt";
+      }
+    },
+    onReset(evt) {
+      evt.preventDefault();
+      // Reset our form values
+      this.model.username = "";
+      this.model.password = "";
+      this.error = false;
+      this.errorMessage = "";
+    }
+  },
+  computed: {
+    ...mapState({
+      user: state => state.user.user
+    })
+  }
+};
+</script>
+
 <style scoped>
 .outside-register {
   display: inline;
@@ -224,50 +277,3 @@
   }
 }
 </style>
-
-<script>
-import UserService from "@/services/user-service";
-
-export default {
-  data() {
-    return {
-      error: false,
-      errorMessage: "",
-      model: {
-        username: "",
-        password: ""
-      }
-    };
-  },
-  methods: {
-    async onSubmit(evt) {
-      evt.preventDefault();
-      let that = this;
-
-      var userService = new UserService();
-      var result = await userService
-        .authenticate({
-          username: this.model.username,
-          password: this.model.password
-        })
-        .then(response => {
-          this.onReset(evt);
-          that.$router.push("dashboard");
-        })
-        .catch(error => {
-          this.onReset(evt);
-          that.error = true;
-          that.errorMessage = "Invalid login attempt";
-        });
-    },
-    onReset(evt) {
-      evt.preventDefault();
-      // Reset our form values
-      this.model.username = "";
-      this.model.password = "";
-      this.error = false;
-      this.errorMessage = "";
-    }
-  }
-};
-</script>

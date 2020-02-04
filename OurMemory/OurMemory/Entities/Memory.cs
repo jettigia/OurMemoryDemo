@@ -8,7 +8,8 @@ namespace OurMemory.Entities
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
-        public byte[] Content { get; set; }
+        public byte[] Upload { get; set; }
+        public string Content { get; set; }
         public string ContentType { get; set; }
         public List<Comment> Comments { get; set; }
         public string Title { get; set; }

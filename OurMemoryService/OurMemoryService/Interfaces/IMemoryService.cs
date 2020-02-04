@@ -7,14 +7,14 @@ namespace OurMemoryService.Interfaces
 {
     public interface IMemoryService
     {
-        Task<TextMemoryViewModel> CreateTextMemoryAsync(string userId, TextMemoryInputModel post);
+        Task<MemoryViewModel> CreateAsync(string userId, MemoryInputModel post);
 
-        Task<TextMemoryViewModel> ReadAsync(Guid postId, Guid userId);
+        Task<MemoryViewModel> ReadAsync(Guid postId, Guid userId);
 
-        Task<List<TextMemoryViewModel>> ReadAsync(Guid userId);
+        Task<List<MemoryViewModel>> ReadAsync(Guid userId);
 
-        Task<TextMemoryViewModel> UpdateAsync(TextMemoryViewModel post);
+        Task<MemoryViewModel> UpdateAsync(MemoryViewModel post);
 
-        Task<bool> DeleteAsync(TextMemoryViewModel post);
+        Task<bool> DeleteAsync(MemoryViewModel post);
     }
 }

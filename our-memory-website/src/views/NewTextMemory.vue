@@ -5,6 +5,7 @@
       <div id="editorPageBG">
         <b-form @submit="onSubmit" @reset="onReset">
           <input
+            v-model="model.title"
             type="text"
             name="memoryTitle"
             placeholder="Title"
@@ -13,7 +14,7 @@
           <br />
           <br />
           <textarea
-            v-model="model.memory"
+            v-model="model.content"
             style="width:100%;height:100%;border:none;"
             rows="26"
             wrap="hard"
@@ -46,8 +47,10 @@ export default {
   data() {
     return {
       model: {
-        memory: "",
-        memoryError: ""
+        title: "",
+        content: "",
+        memoryError: "",
+        uploads: []
       },
       show: true
     };
@@ -71,7 +74,7 @@ export default {
     onReset(evt) {
       evt.preventDefault();
       // Reset our form values
-      this.model.memory = "";
+      this.model.content = "";
       // Trick to reset/clear native browser form validation state
       this.show = false;
       this.$nextTick(() => {

@@ -7,6 +7,7 @@ const versionPath = `${usersEndpoint}version`;
 class UserService {
   constructor() {
     this.url = process.env.VUE_APP_API;
+    axios.defaults.withCredentials = true;
   }
   /**
    * Register a user.
@@ -51,7 +52,8 @@ class UserService {
   async authenticate(entity) {
     const apiCall = await axios.post(this.url + authenticatePath, entity, {
       headers: {
-        "Access-Control-Allow-Origin": "*"
+        "Access-Control-Allow-Origin": "http://localhost:8080/",
+        "XMLHttpRequest.withCredentials": true
       }
     });
     return apiCall;

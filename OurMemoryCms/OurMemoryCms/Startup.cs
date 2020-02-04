@@ -34,7 +34,7 @@ namespace OurMemoryCms
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
                 {
-                    options.LoginPath = "/users/authenticate";
+                    options.LoginPath = "/user/authenticate";
                     options.SlidingExpiration = true;
                     options.ExpireTimeSpan = TimeSpan.FromDays(7);
                     options.Events.OnRedirectToLogin = (context) =>
@@ -59,6 +59,10 @@ namespace OurMemoryCms
             services.AddScoped<ICommentRepository, CommentRepository>();
             services.AddScoped<IMemoryRepository, MemoryRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+
+            services.AddMvc()
+                .AddSessionStateTempDataProvider();
+            services.AddSession();
 
             services.AddCors(options =>
             {
@@ -85,9 +89,14 @@ namespace OurMemoryCms
                 app.UseDeveloperExceptionPage();
             }
 
+            // Configure Cors based on environment
             app.UseCors(VUE_CORS_POLICY);
 
             app.UseHttpsRedirection();
+
+            app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseRouting();
 

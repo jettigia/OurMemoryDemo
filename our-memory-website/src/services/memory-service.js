@@ -1,33 +1,25 @@
 const axios = require("axios");
-const textMemoryEndpoint = "textmemory/";
+const memoryEndpoint = "memory/";
 
 class MemoryService {
   constructor() {
     axios.baseUrl = process.env.VUE_APP_API;
+    axios.defaults.withCredentials = true;
   }
   /**
    * Register a user.
    * @param {A entity Object} entity
    */
-  async createTextMemory(entity) {
-    debugger;
-    const newAxios = axios;
-    const apiCall2 = await axios.post(
-      process.env.VUE_APP_API + textMemoryEndpoint,
+  async createMemory(entity) {
+    const apiCall = await axios.post(
+      process.env.VUE_APP_API + memoryEndpoint,
       entity,
       {
         headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET, POST"
+          "Access-Control-Allow-Origin": "http://localhost:8080/"
         }
       }
     );
-    const apiCall = await axios.post(textMemoryEndpoint, entity, {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, POST"
-      }
-    });
     return apiCall;
   }
 
