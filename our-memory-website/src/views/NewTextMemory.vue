@@ -57,12 +57,13 @@ export default {
   },
   methods: {
     ...mapActions({
-      createTextMemory: "memory/createTextMemory"
+      createTextMemory: "memory/createMemory"
     }),
     async onSubmit(evt) {
       evt.preventDefault();
       await this.createTextMemory({
-        textContent: this.model.memory
+        title: this.model.title,
+        textContent: this.model.content
       });
 
       if (this.memorySuccess) {

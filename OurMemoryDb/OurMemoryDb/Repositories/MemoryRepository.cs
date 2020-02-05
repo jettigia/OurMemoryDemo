@@ -2,6 +2,7 @@
 using OurMemory.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace OurMemoryDb
@@ -28,12 +29,13 @@ namespace OurMemoryDb
             return entity;
         }
 
-        public async Task<List<Memory>> ReadAllEntityAsync(Guid userId)
+        public async Task<List<Memory>> ReadAllEntityAsync(string username)
         {
-            var connection = _context.Database.GetDbConnection();
-            _context.SaveChanges();
-            var entity = await _context.Memories.ToListAsync();
-            return entity;
+            var entities = await _context.Memories
+                .Include(memory => memory.User)
+                .Where(memory => memory.User.Username == username).ToListAsync();
+
+            return entities;
         }
 
         public async Task<Memory> UpdateEntityAsync(Memory entity)

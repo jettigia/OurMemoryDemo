@@ -12,6 +12,8 @@ namespace OurMemory.Models
 
         public DateTime DateTime { get; set; }
 
+        public string Title { get; set; }
+
         public string UserIcon { get; set; }
 
         public string UserId { get; set; }

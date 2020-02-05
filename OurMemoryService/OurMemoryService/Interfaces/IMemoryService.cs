@@ -9,9 +9,9 @@ namespace OurMemoryService.Interfaces
     {
         Task<MemoryViewModel> CreateAsync(string userId, MemoryInputModel post);
 
-        Task<MemoryViewModel> ReadAsync(Guid postId, Guid userId);
+        Task<MemoryViewModel> ReadAsync(Guid postId, string username);
 
-        Task<List<MemoryViewModel>> ReadAsync(Guid userId);
+        Task<List<MemoryViewModel>> ReadAsync(string username);
 
         Task<MemoryViewModel> UpdateAsync(MemoryViewModel post);
 

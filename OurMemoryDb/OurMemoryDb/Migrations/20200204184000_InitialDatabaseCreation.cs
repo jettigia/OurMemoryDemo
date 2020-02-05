@@ -29,7 +29,8 @@ namespace OurMemoryDb.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Content = table.Column<byte[]>(nullable: true),
+                    Upload = table.Column<byte[]>(nullable: true),
+                    Content = table.Column<string>(nullable: true),
                     ContentType = table.Column<string>(nullable: true),
                     Title = table.Column<string>(nullable: true),
                     UserId = table.Column<Guid>(nullable: false)

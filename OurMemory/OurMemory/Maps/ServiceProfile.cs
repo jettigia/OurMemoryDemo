@@ -9,10 +9,8 @@ namespace OurMemoryService.Maps
         public ServiceProfile()
         {
             CreateMap<MemoryInputModel, Memory>()
-                .ForMember(destination => destination.Content, opts => opts.MapFrom(source => source.FileContent));
-
-            CreateMap<MemoryInputModel, Memory>()
-                .ForMember(destination => destination.Title, opts => opts.MapFrom(source => source.TextContent));           
+                .ForMember(destination => destination.Content, opts => opts.MapFrom(source => source.FileContent))
+                .ForMember(destination => destination.Content, opts => opts.MapFrom(source => source.TextContent));           
 
             CreateMap<Memory, MemoryViewModel>()
                 .ReverseMap();

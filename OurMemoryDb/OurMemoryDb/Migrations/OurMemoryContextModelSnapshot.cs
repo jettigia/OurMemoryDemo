@@ -42,14 +42,17 @@ namespace OurMemoryDb.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<byte[]>("Content")
-                        .HasColumnType("longblob");
+                    b.Property<string>("Content")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("ContentType")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Title")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<byte[]>("Upload")
+                        .HasColumnType("longblob");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("char(36)");

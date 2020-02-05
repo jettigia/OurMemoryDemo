@@ -7,6 +7,6 @@ namespace OurMemoryDb
 {
     public interface IMemoryRepository : IRepository<Memory>
     {
-        Task<List<Memory>> ReadAllEntityAsync(Guid userId);
+        Task<List<Memory>> ReadAllEntityAsync(string username);
     }
 }

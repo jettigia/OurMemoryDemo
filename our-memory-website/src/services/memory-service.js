@@ -1,5 +1,5 @@
 const axios = require("axios");
-const memoryEndpoint = "memory/";
+const memoryEndpoint = process.env.VUE_APP_API + "memory/";
 
 class MemoryService {
   constructor() {
@@ -11,15 +11,11 @@ class MemoryService {
    * @param {A entity Object} entity
    */
   async createMemory(entity) {
-    const apiCall = await axios.post(
-      process.env.VUE_APP_API + memoryEndpoint,
-      entity,
-      {
-        headers: {
-          "Access-Control-Allow-Origin": "http://localhost:8080/"
-        }
+    const apiCall = await axios.post(memoryEndpoint, entity, {
+      headers: {
+        "Access-Control-Allow-Origin": "http://localhost:8080/"
       }
-    );
+    });
     return apiCall;
   }
 
@@ -30,7 +26,7 @@ class MemoryService {
   async getMemories() {
     const apiCall = await axios.get(memoryEndpoint, {
       headers: {
-        "Access-Control-Allow-Origin": "*"
+        "Access-Control-Allow-Origin": "http://localhost:8080/"
       }
     });
     return apiCall;

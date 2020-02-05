@@ -221,7 +221,7 @@
                 id="username.Label"
                 label="Username:"
                 label-for="username"
-                :invalid-feedback="usernameError"
+                :invalid-feedback="model.usernameError"
               >
                 <b-form-input
                   id="username"
@@ -229,7 +229,7 @@
                   required
                   placeholder="Enter username 8 to 16 characters"
                 ></b-form-input>
-                <div :v-show="error">{{ model.usernameError }}</div>
+                <div :v-show="hasError">{{ model.usernameError }}</div>
               </b-form-group>
 
               <div style="display:inline;">
@@ -246,7 +246,7 @@
                     placeholder="Enter password with one uppercase, lowercase letter and one digit"
                     type="password"
                   ></b-form-input>
-                  <div :v-show="error">{{ model.passwordError }}</div>
+                  <div :v-show="hasError">{{ model.passwordError }}</div>
                 </b-form-group>
 
                 <b-form-group
@@ -254,7 +254,7 @@
                   label="Confirm password:"
                   label-for="ConfirmPasswordInput"
                   style="display:inline;float:right;width:48%;"
-                  :invalid-feedback="passwordError"
+                  :invalid-feedback="model.passwordError"
                   :state="hasError"
                   ><b-form-input
                     id="confirmPasswordInput"
@@ -303,12 +303,13 @@ export default {
         firstName: "",
         lastName: "",
         username: "",
-        usernmaneError: "",
+        usernameError: "",
         confirmPassword: "",
         password: "",
         passwordError: ""
       },
-      show: true
+      show: true,
+      hasError: false
     };
   },
   methods: {
@@ -330,11 +331,12 @@ export default {
         this.$router.push("registrationSuccess");
       } else {
         if (user.Password) {
-          that.model.passwordError = usser.Password.join(" ");
+          that.model.passwordError = user.Password.join(" ");
         }
         if (user.Username) {
           that.model.usernameError = user.Username.join(" ");
         }
+        this.hasError = true;
       }
     },
     onReset(evt) {

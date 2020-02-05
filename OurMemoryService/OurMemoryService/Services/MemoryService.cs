@@ -43,14 +43,14 @@ namespace OurMemoryService.Services
             return newViewModel;
         }
 
-        public async Task<MemoryViewModel> ReadAsync(Guid postId, Guid userId)
+        public async Task<MemoryViewModel> ReadAsync(Guid postId, string username)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<List<MemoryViewModel>> ReadAsync(Guid userId)
+        public async Task<List<MemoryViewModel>> ReadAsync(string username)
         {
-            var postEntities = await _postRepository.ReadAllEntityAsync(userId);
+            var postEntities = await _postRepository.ReadAllEntityAsync(username);
             var postModels = _mapper.Map<List<MemoryViewModel>>(postEntities);
             return postModels;
         }

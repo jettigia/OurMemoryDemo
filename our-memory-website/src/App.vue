@@ -51,7 +51,7 @@
                   <form class="form" role="form">
                     <div class="form-group">
                       <input
-                        id="emailInput"
+                        id="emailLogin"
                         v-model="model.username"
                         placeholder="Username"
                         class="form-control form-control-sm"
@@ -61,7 +61,7 @@
                     </div>
                     <div class="form-group">
                       <input
-                        id="passwordInput"
+                        id="passwordLogin"
                         v-model="model.password"
                         placeholder="Password"
                         class="form-control form-control-sm"

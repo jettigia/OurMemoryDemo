@@ -39,9 +39,11 @@ const actions = {
     var result = await memoryService
       .getMemories()
       .then(response => {
+        debugger;
         commit("setMemories", response.data);
       })
       .catch(error => {
+        debugger;
         commit("setMemoryFail", error.response.data.errors);
       });
   }

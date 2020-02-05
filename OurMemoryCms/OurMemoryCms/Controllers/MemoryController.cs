@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace OurMemoryCms.Controllers
 {
     [Produces("application/json")]
-    [Route("api/ImageMemory")]
+    [Route("api/Memory")]
     public class MemoryController : Controller
     {
         private readonly IWebHostEnvironment _environment;
@@ -26,12 +26,12 @@ namespace OurMemoryCms.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateTextModel(MemoryInputModel textMemoryViewModel)
+        public async Task<ActionResult> CreateTextModel([FromBody]MemoryInputModel textMemoryViewModel)
         {
             try
             {
-                var userId = HttpContext.User.Identity.Name;
-                var newPost = await _memoryService.CreateAsync(userId, textMemoryViewModel);
+                var username = HttpContext.User.Identity.Name;
+                var newPost = await _memoryService.CreateAsync(username, textMemoryViewModel);
 
                 if (newPost != null)
                 {
@@ -54,7 +54,8 @@ namespace OurMemoryCms.Controllers
         {
             try
             {
-                var myPosts = await _memoryService.ReadAsync(Guid.NewGuid());
+                var username = HttpContext.User.Identity.Name;
+                var myPosts = await _memoryService.ReadAsync(username);
                 return myPosts;
             }
             catch (Exception ex)
@@ -69,7 +70,8 @@ namespace OurMemoryCms.Controllers
         {
             try
             {
-                var myPosts = await _memoryService.ReadAsync(postId, Guid.NewGuid());
+                var username = HttpContext.User.Identity.Name;
+                var myPosts = await _memoryService.ReadAsync(postId, username);
                 return myPosts;
             }
             catch (Exception ex)
