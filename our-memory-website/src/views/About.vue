@@ -21,11 +21,13 @@
                     Our Memory is dedicated to storing and protecting your
                     memories.
                   </p>
+                  <br>
                   <!-- <h4>Info 1</h4>
 						<p>Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas ac-cusan. </p>
 						<h4>Info 2</h4>
 						<p>Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas ac-cusan lacus vel facilisis.</p> -->
-                  <a href="#" class="site-btn">contact us</a>
+                  <router-link to="/ContactUs" class="site-btn"> Contact Us</router-link>
+                  
                 </div>
               </div>
             </div>
@@ -51,17 +53,14 @@ home-html {
 #center-home-panel {
   position: absolute;
   margin: auto;
-
   right: 0;
   left: 0;
   bottom: 30%;
   top: 35%;
-
   width: 70%;
   padding: 30px;
   background-color: #ffffffef;
 }
-
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto;

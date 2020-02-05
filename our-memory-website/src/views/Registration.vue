@@ -24,145 +24,30 @@
               </div>
               <div class="modal-body">
                 <!-- Terms o service -->
-                <div>
-                  <div style="left:67.34px;top:52.56px" class="cls_002">
-                    <span class="cls_002">OurMemory Terms and Conditions</span>
-                  </div>
-                  <div style="left:53.88px;top:128.66px" class="cls_004">
-                    <span class="cls_004">Terms and Conditions</span>
-                  </div>
-                  <div style="left:53.16px;top:170.06px" class="cls_003">
-                    <span class="cls_003">Last updated: 1/17/2020</span>
-                  </div>
-                  <div style="left:53.16px;top:205.82px" class="cls_003">
-                    <span class="cls_003"
-                      >Please read these Terms and Conditions carefully before
-                      using</span
-                    >
-                  </div>
-                  <div style="left:53.64px;top:220.46px" class="cls_003">
-                    <span class="cls_003">the </span
-                    ><A HREF="http://www.ourmemory.com/"
-                      >http://www.ourmemory.com</A
-                    >
-                    website and the OurMemory mobile<span class="cls_005">
-                    </span
-                    ><span class="cls_003">application (the "Service")</span>
-                  </div>
-                  <div style="left:53.64px;top:235.22px" class="cls_003">
-                    <span class="cls_003">operated by OurMemory</span
-                    ><span class="cls_005">.</span>
-                  </div>
-                  <div style="left:53.16px;top:271.13px" class="cls_003">
-                    <span class="cls_003"
-                      >Your access to and use of the Service is conditioned on
-                      your acceptance of and compliance with</span
-                    >
-                  </div>
-                  <div style="left:53.64px;top:285.77px" class="cls_003">
-                    <span class="cls_003"
-                      >these Terms. These Terms apply to all visitors, users and
-                      others who access or use the Service.</span
-                    >
-                  </div>
-                  <div style="left:53.16px;top:315.77px" class="cls_006">
-                    <span class="cls_006"
-                      >By accessing or using the Service you agree to be bound
-                      by these Terms. If you disagree</span
-                    >
-                  </div>
-                  <div style="left:53.64px;top:329.33px" class="cls_006">
-                    <span class="cls_006"
-                      >with any part of the terms then you may not access the
-                      Service.</span
-                    >
-                  </div>
-                  <div style="left:53.16px;top:359.21px" class="cls_006">
-                    <span class="cls_006">Content</span>
-                  </div>
-                  <div style="left:53.16px;top:389.21px" class="cls_003">
-                    <span class="cls_003"
-                      >Our Service allows you to post, link, store, share and
-                      otherwise make available certain information,</span
-                    >
-                  </div>
-                  <div style="left:53.64px;top:403.85px" class="cls_003">
-                    <span class="cls_003"
-                      >text, graphics, videos, or other material
-                      ("Content").</span
-                    >
-                  </div>
-                  <div style="left:53.16px;top:442.63px" class="cls_003">
-                    <span class="cls_003"
-                      >Our Service may contain links to third-party web sites or
-                      services that are not owned or controlled</span
-                    >
-                  </div>
-                  <div style="left:53.64px;top:457.39px" class="cls_003">
-                    <span class="cls_003">by OurMemory.</span>
-                  </div>
-                  <div style="left:53.16px;top:493.27px" class="cls_003">
-                    <span class="cls_003"
-                      >OurMemory has no control over, and assumes no
-                      responsibility for, the content, privacy policies,
-                      or</span
-                    >
-                  </div>
-                  <div style="left:53.64px;top:511.39px" class="cls_003">
-                    <span class="cls_003"
-                      >practices of any third party web sites or services. You
-                      further acknowledge and agree that</span
-                    >
-                  </div>
-                  <div style="left:53.64px;top:529.51px" class="cls_003">
-                    <span class="cls_003"
-                      >OurMemory shall not be responsible or liable, directly or
-                      indirectly, for any damage or loss caused</span
-                    >
-                  </div>
-                  <div style="left:53.64px;top:547.63px" class="cls_003">
-                    <span class="cls_003"
-                      >or alleged to be caused by or in connection with use of
-                      or reliance on any such content, goods or</span
-                    >
-                  </div>
-                  <div style="left:53.64px;top:565.75px" class="cls_003">
-                    <span class="cls_003"
-                      >services available on or through any such web sites or
-                      services.</span
-                    >
-                  </div>
-                  <div style="left:53.16px;top:599.26px" class="cls_006">
-                    <span class="cls_006">Changes</span>
-                  </div>
-                  <div style="left:53.16px;top:629.26px" class="cls_003">
-                    <span class="cls_003"
-                      >We reserve the right, at our sole discretion, to modify
-                      or replace these Terms at any time. If a</span
-                    >
-                  </div>
-                  <div style="left:53.64px;top:647.26px" class="cls_003">
-                    <span class="cls_003"
-                      >revision is material we will try to provide at least 15
-                      days' notice prior to any new terms taking effect.</span
-                    >
-                  </div>
-                  <div style="left:53.64px;top:665.14px" class="cls_003">
-                    <span class="cls_003"
-                      >What constitutes a material change will be determined at
-                      our sole discretion.</span
-                    >
-                  </div>
-                  <div style="left:53.16px;top:698.26px" class="cls_006">
-                    <span class="cls_006">Contact Us</span>
-                  </div>
-                  <div style="left:53.16px;top:728.14px" class="cls_003">
-                    <span class="cls_003"
-                      >If you have any questions about these Terms, please
-                      contact us.</span
-                    >
-                  </div>
-                </div>
+                <h2>OurMemory Terms and Conditions</h2>
+                <h3>Terms and Conditions ("Terms")</h3>
+                <p>Last updated: 1/17/2020</p>
+                <br>
+                <p>Please read these Terms and Conditions ("Terms", "Terms and Conditions") carefully before using the http://www.ourmemory.com website and the OurMemory mobile application (the "Service") operated by OurMemory.</p>
+                <br>
+                <p>Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who access or use the Service.</p>
+                <br>
+                <p>By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of the terms then you may not access the Service.</p>
+                <br>
+                <p style="font-weight: bold;">Content</p>
+                <p>Our Service allows you to post, link, store, share and otherwise make available certain information, text, graphics, videos, or other material ("Content").</p>
+                <br>
+                <p>Our Service may contain links to third-party web sites or services that are not owned or controlled by OurMemory.</p>
+                <br>
+                <p>OurMemory has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third party web sites or services. You further acknowledge and agree that OurMemory shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or services available on or through any such web sites or services.</p>
+                <br>
+                <p style="font-weight: bold;">Changes</p>
+                <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material we will try to provide at least 15 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.</p>
+                <br>
+                <p style="font-weight: bold;">Contact Us</p>
+                <p>If you have any questions about these Terms, please contact us.</p>
+                
+                <!-- Terms o service -->
               </div>
             </div>
           </div>
@@ -221,7 +106,7 @@
                 id="username.Label"
                 label="Username:"
                 label-for="username"
-                :invalid-feedback="model.usernameError"
+                :invalid-feedback="usernameError"
               >
                 <b-form-input
                   id="username"
@@ -229,7 +114,7 @@
                   required
                   placeholder="Enter username 8 to 16 characters"
                 ></b-form-input>
-                <div :v-show="hasError">{{ model.usernameError }}</div>
+                <div :v-show="error">{{ model.usernameError }}</div>
               </b-form-group>
 
               <div style="display:inline;">
@@ -246,7 +131,7 @@
                     placeholder="Enter password with one uppercase, lowercase letter and one digit"
                     type="password"
                   ></b-form-input>
-                  <div :v-show="hasError">{{ model.passwordError }}</div>
+                  <div :v-show="error">{{ model.passwordError }}</div>
                 </b-form-group>
 
                 <b-form-group
@@ -254,7 +139,7 @@
                   label="Confirm password:"
                   label-for="ConfirmPasswordInput"
                   style="display:inline;float:right;width:48%;"
-                  :invalid-feedback="model.passwordError"
+                  :invalid-feedback="passwordError"
                   :state="hasError"
                   ><b-form-input
                     id="confirmPasswordInput"
@@ -292,9 +177,41 @@
   </div>
 </template>
 
-<script>
-import { mapActions, mapState } from "vuex";
+<style scoped>
+home-html {
+  /* height: 100%; */
+  background-color: #cccccc;
+}
+.home {
+  height: 90%;
+  /* padding-bottom: 0px 0px 19px 0px; */
+}
+#center-home-panel {
+  position: absolute;
+  margin: auto;
+  right: 0;
+  left: 0;
+  top: 10%;
+  width: 70%;
+  padding: 30px;
+  background-color: #ffffffef;
+}
+.regBody {
+  width: 50%;
+  left: 25%;
+  display: inline-block;
+}
+@media only screen and (max-width: 600px) {
+  .regBody {
+    width: 100%;
+    left: 25%;
+    display: inline-block;
+  }
+}
+</style>
 
+<script>
+import UserService from "@/components/user-service.js";
 export default {
   data() {
     return {
@@ -309,52 +226,62 @@ export default {
         passwordError: ""
       },
       show: true,
-      hasError: false
+      error: false
     };
   },
   methods: {
-    ...mapActions({
-      register: "user/register"
-    }),
     async onSubmit(evt) {
       evt.preventDefault();
-
-      await this.register({
-        email: this.model.email,
-        firstName: this.model.firstName,
-        lastName: this.model.lastName,
-        username: this.model.username,
-        password: this.model.password
-      });
-
-      if (this.user.registerStatus) {
-        this.$router.push("registrationSuccess");
-      } else {
-        if (user.Password) {
-          that.model.passwordError = user.Password.join(" ");
-        }
-        if (user.Username) {
-          that.model.usernameError = user.Username.join(" ");
-        }
-        this.hasError = true;
-      }
+      this.errorReset();
+      let that = this;
+      var userService = new UserService();
+      var result = await userService
+        .register({
+          email: this.model.email,
+          firstName: this.model.firstName,
+          lastName: this.model.lastName,
+          username: this.model.username,
+          password: this.model.password
+        })
+        .then(response => {
+          that.$router.push("registrationSuccess");
+        })
+        .catch(error => {
+          debugger;
+          if (error.response.status == 400) {
+            that.error = true;
+            if (error.response.data.errors.Password) {
+              that.model.passwordError = error.response.data.errors.Password.join(
+                " "
+              );
+            }
+            if (error.response.data.errors.Username) {
+              that.model.usernameError = error.response.data.errors.Username.join(
+                " "
+              );
+            }
+          } else {
+            that.$router.push("registrationUnsuccess");
+          }
+        });
+    },
+    errorReset() {
+      this.model.passwordError = "";
+      this.model.usernameError = "";
+      this.error = false;
     },
     onReset(evt) {
       evt.preventDefault();
       // Reset our form values
       this.model.email = "";
       this.model.name = "";
+      this.errorReset();
       // Trick to reset/clear native browser form validation state
       this.show = false;
       this.$nextTick(() => {
         this.show = true;
       });
     }
-  },
-  computed: {
-    ...mapState({
-      user: state => state.user.user
-    })
   }
 };
 </script>
