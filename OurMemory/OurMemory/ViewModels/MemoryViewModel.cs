@@ -6,6 +6,7 @@ namespace OurMemory.Models
     public class MemoryViewModel
     {
         public Guid Id { get; set; }
+
         public string Content { get; set; }
 
         public List<CommentViewModel> Comments { get; set; }
