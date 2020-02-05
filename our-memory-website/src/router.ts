@@ -2,20 +2,24 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
 import Register from "./views/Registration.vue";
-import RegisterSuccess from "@/views/RegistrationSuccess.vue";
-import RegisterUnSuccess from "@/views/RegistrationUnSuccess.vue";
+import RegisterSuccess from "./views/RegistrationSuccess.vue";
+import RegisterUnSuccess from "./views/RegistrationUnSuccess.vue";
 import Dashboard from "./views/Dashboard.vue";
 import NewTextMemory from "./views/NewTextMemory.vue";
 import NewPhotoMemory from "./views/NewPhotoMemory.vue";
 import NewVideoMemory from "./views/NewVideoMemory.vue";
 import MemoryCreateSuccess from "./views/MemoryCreateSuccess.vue";
+import ContactUs from "./views/ContactUs.vue";
+import ResetPassword from "./views/ResetPassword.vue";
+import ResetPasswordVerified from "./views/ResetPasswordVerified.vue";
+import ResetPasswordSent from "./views/ResetPasswordSent.vue";
+import ResetPasswordVerifiedSuccess from "./views/ResetPasswordVerifiedSuccess.vue";
 
 Vue.use(Router);
 
 export default new Router({
   mode: "history",
   base: process.env.BASE_URL,
-  // TODO: All routes here and in the application should use a constant.
   routes: [
     {
       path: "/",
@@ -43,12 +47,12 @@ export default new Router({
     },
     {
       path: "/registrationUnSuccess",
-      name: "registrationUnsuccess",
+      name: "registrationUnSuccess",
       component: RegisterUnSuccess
     },
     {
-      path: "/dashboard",
-      name: "dashboard",
+      path: "/Dashboard",
+      name: "Dashboard",
       component: Dashboard
     },
     {
@@ -57,24 +61,49 @@ export default new Router({
       component: Home
     },
     {
-      path: "/newTextMemory",
-      name: "newTextMemory",
+      path: "/NewTextMemory",
+      name: "NewTextMemory",
       component: NewTextMemory
     },
     {
-      path: "/newPhotoMemory",
-      name: "newPhotoMemory",
+      path: "/NewPhotoMemory",
+      name: "NewPhotoMemory",
       component: NewPhotoMemory
     },
     {
-      path: "/newVideoMemory",
-      name: "newVideoMemory",
+      path: "/NewVideoMemory",
+      name: "NewVideoMemory",
       component: NewVideoMemory
     },
     {
-      path: "/memoryCreateSuccess",
-      name: "memoryCreateSuccess",
+      path: "/MemoryCreateSuccess",
+      name: "MemoryCreateSuccess",
       component: MemoryCreateSuccess
+    },
+    {
+      path: "/ContactUs",
+      name: "ContactUs",
+      component: ContactUs
+    },
+    {
+      path: "/ResetPassword",
+      name: "ResetPassword",
+      component: ResetPassword
+    },
+    {
+      path: "/ResetPasswordVerified",
+      name: "ResetPasswordVerified",
+      component: ResetPasswordVerified
+    },
+    {
+      path: "/ResetPasswordSent",
+      name: "ResetPasswordSent",
+      component: ResetPasswordSent
+    },
+    {
+      path: "/ResetPasswordVerifiedSuccess",
+      name: "ResetPasswordVerifiedSuccess",
+      component: ResetPasswordVerifiedSuccess
     }
   ]
 });
