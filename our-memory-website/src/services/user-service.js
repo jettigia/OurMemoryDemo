@@ -52,7 +52,7 @@ class UserService {
   async authenticate(entity) {
     const apiCall = await axios.post(this.url + authenticatePath, entity, {
       headers: {
-        "Access-Control-Allow-Origin": "http://localhost:8080/",
+        "Access-Control-Allow-Origin": "*",
         "XMLHttpRequest.withCredentials": true
       }
     });
